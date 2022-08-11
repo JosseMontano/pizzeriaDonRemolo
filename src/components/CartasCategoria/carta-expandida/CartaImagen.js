@@ -1,0 +1,1 @@
+export const CartaImagen = ({ imagenCarta }) => <img className="carta-imagen w-full" src={`./imagenes/${imagenCarta}`} alt={imagenCarta} />;

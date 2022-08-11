@@ -1,0 +1,59 @@
+/** {
+    background-color: rgba(250, 86, 86, 0.2);
+}*/
+
+.carta-expandida {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 72px;
+    background-color: rgba(28, 28, 28, 0.6);
+}
+
+.carta-grande {
+    height: fit-content;
+    margin-top: 40px;
+}
+
+.carta-imagen {
+    object-position: center;
+    height: 170px;
+    object-fit: cover;
+}
+
+.descripcion-container {
+    padding: 16px;
+}
+
+.aclaracion {
+    border-top: 1px solid rgba(146, 146, 146, 0.1);
+}
+
+.aclaracion-container{
+    padding: 16px;
+}
+
+.confirmar-button {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.1s;
+}
+
+.confirmar-button:hover {
+    transform: scale(1.07);
+}
+
+.carta-boton-atras:hover {
+    transition: all 0.1s;
+}
+
+.carta-boton-atras:hover {
+    transform: scale(1.07);
+}
+
+.aclaracion-contador {
+    text-align: end;
+}

@@ -1,0 +1,43 @@
+@font-face {
+    font-family: Cera-Pro-Medium;
+    src: url("/public/font/Cera\ Pro\ Medium.otf");
+}
+@font-face {
+    font-family: Cera-Pro-Regular;
+    src: url("/public/font/Cera\ Pro\ Regular.otf");
+}
+@font-face {
+    font-family: Cera-Pro-Bold;
+    src: url("/public/font/Cera\ Pro\ Bold.otf");
+}
+.titulo_resumen{
+    font-family: Cera-Pro-Medium;
+    position: absolute;
+    left: 415px;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 30px;
+    color: #302129;
+}
+.titulo-pedido{
+    color: #302129;
+    font-family: Cera-Pro-Medium;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 20px;
+}
+.descripcion-pedido{
+    font-family: Cera-Pro-Regular;
+    text-align: left;
+    color: #53464D;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 18px;
+}
+.precio{
+    font-family: Cera-Pro-Medium;
+    font-weight: 500;
+    font-size: 24px;
+line-height: 30px;
+color: #302129;
+}

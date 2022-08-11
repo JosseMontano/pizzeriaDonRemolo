@@ -1,0 +1,27 @@
+@font-face {
+    font-family: Cera-Pro-Regular;
+    src: url("/public/font/Cera\ Pro\ Regular.otf");
+}
+div section input{
+    font-family:Cera-Pro-Regular ;
+    background-image: url('/public/media/search-glass-solid.svg');
+    background-repeat: no-repeat;
+    background-position: 8px center;
+    background-size: 20px;
+    box-shadow:1px 1px 3px 1px #bbb9b9;
+    margin-bottom: 10px;
+    outline: none;
+}
+
+@media screen and (min-width: 1280px) {
+    div section input{
+        font-family:Cera-Pro-Regular ;
+        background-image: url('/public/media/search-glass-solid.svg');
+        background-repeat: no-repeat;
+        background-position: 10px center;
+        background-size: 18px;
+        box-shadow:1px 1px 3px 1px #bbb9b9;
+        margin-bottom: 10px;
+        outline: none;
+    }
+}

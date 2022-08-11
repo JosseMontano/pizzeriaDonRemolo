@@ -1,0 +1,32 @@
+@font-face {
+    font-family: Cera-Pro-Medium;
+    src: url("/public/font/Cera\ Pro\ Medium.otf");
+}
+@font-face {
+    font-family: Cera-Pro-Bold;
+    src: url("/public/font/Cera\ Pro\ Bold.otf");
+}
+section p{
+    color:#E74423;
+    font-family: Cera-Pro-Medium;
+    
+}
+section p span{
+    color:#E74423;
+    font-family: Cera-Pro-Bold;
+    
+}
+.fondo{
+    background-color: #ffff;
+
+}
+@media screen and (min-width: 360px) {
+    .fondo{
+        background-color: #E74423;
+    }
+}
+@media screen and (min-width: 1280px) {
+    .fondo{
+        background-color: #ffff;
+    }
+}
