@@ -11,14 +11,14 @@ const FiltradoBuscador = ({ busqueda, datosPizza, datosPizzaFull }) => {
             .map((data) => {
               return <ApiRest {...data} />;
             })
-        : datosPizzaFull
-            .filter((data) => {
-              if (data.nombre.toLowerCase().includes(busqueda.toLowerCase()))
-                return data;
-            })
-            .map((data) => {
-              return <ApiRest {...data} />;
-            })}
+        : (datosPizzaFull
+          .filter((data) => {
+            if (data.nombre.toLowerCase().includes(busqueda.toLowerCase()))
+              return data;
+          })
+          .map((data) => {
+            return <ApiRest {...data} />;
+          }))}
     </div>
   );
 };

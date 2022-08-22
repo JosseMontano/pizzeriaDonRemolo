@@ -7,6 +7,11 @@ import { useSelector } from "react-redux";
 import BotonContinuarItems from "../ConfirmarCarrito/BotonContinuarItems";
 import "../../styles/cuerpoCategoria/barraCategoria.css";
 import FiltradoBuscador from "./filtradoBuscador";
+import NotFound from "../compartidos/notFound";
+
+
+
+
 
 export default function MostrarApi(props) {
   const [datosPizza, setDatosPizza] = useState([]);
@@ -53,11 +58,16 @@ export default function MostrarApi(props) {
         </div>
       </div>
       <NombreCuerpoCategoria nombreCategoria={nombreCategoria} />
-      <FiltradoBuscador
-        busqueda={busqueda}
-        datosPizza={datosPizza}
-        datosPizzaFull={datosPizzaFull}
-      />
+
+      {datosPizzaFull.length === 0 ? (
+        <NotFound />
+      ) : (
+        <FiltradoBuscador
+          busqueda={busqueda}
+          datosPizza={datosPizza}
+          datosPizzaFull={datosPizzaFull}
+        />
+      )}
       {shoppings.length > 0 ? (
         Object.entries(formUser).length === 0 ? (
           <BotonContinuarItems
