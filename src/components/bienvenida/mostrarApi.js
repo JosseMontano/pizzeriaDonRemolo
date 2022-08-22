@@ -9,10 +9,6 @@ import "../../styles/cuerpoCategoria/barraCategoria.css";
 import FiltradoBuscador from "./filtradoBuscador";
 import NotFound from "../compartidos/notFound";
 
-
-
-
-
 export default function MostrarApi(props) {
   const [datosPizza, setDatosPizza] = useState([]);
   const [nombreProducto, setNombreProducto] = useState([]);
@@ -20,6 +16,7 @@ export default function MostrarApi(props) {
   const [datosPizzaFull, setDatosPizzaFull] = useState([]);
   const shoppings = useSelector((state) => state.shoppings);
   const [auxCat, setAuxCat] = useState("");
+  const [flag, setFlag] = useState(false);
   const fetchData = async (sendid) => {
     props.cats.map((cat) =>
       cat.id === sendid ? (cat.state = true) : (cat.state = false)
@@ -39,6 +36,7 @@ export default function MostrarApi(props) {
     setDatosPizzaFull(datosApi.data.productos);
     setBusqueda(terminoBusqueda);
     console.log(datosApi.data.productos);
+    setFlag(true);
     setNombreProducto(`Todos los productos con la palabra ${terminoBusqueda}`);
     if (terminoBusqueda === "") setNombreProducto(auxCat);
   };
@@ -59,15 +57,16 @@ export default function MostrarApi(props) {
       </div>
       <NombreCuerpoCategoria nombreCategoria={nombreCategoria} />
 
-      {datosPizzaFull.length === 0 ? (
+      <FiltradoBuscador
+        busqueda={busqueda}
+        datosPizza={datosPizza}
+        datosPizzaFull={datosPizzaFull}
+      />
+
+      {datosPizzaFull.length === 0 && flag ? (
         <NotFound />
-      ) : (
-        <FiltradoBuscador
-          busqueda={busqueda}
-          datosPizza={datosPizza}
-          datosPizzaFull={datosPizzaFull}
-        />
-      )}
+      ) :<p style={{display:"none"}}>SI HAY</p> }
+
       {shoppings.length > 0 ? (
         Object.entries(formUser).length === 0 ? (
           <BotonContinuarItems
