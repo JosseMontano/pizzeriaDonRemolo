@@ -39,7 +39,7 @@ const Buscador = (props) => {
     <>
       <div
         style={inputWrapper}
-        className="w-[336px] h-[44px] pl-10 p-4 xl:p-2 xl:pl-11 xl:w-[400px] xl:-top-[8px] desktop:w-[370px] desktop:h-[44px] search"
+        className="max-w-xl w-[336px] h-[44px] pl-10 p-4 xl:p-2 xl:pl-11 xl:w-[400px] xl:-top-[8px] desktop:w-[370px] desktop:h-[44px] search"
       >
         <input
           type="text"
