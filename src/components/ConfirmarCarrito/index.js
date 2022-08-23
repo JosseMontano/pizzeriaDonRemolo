@@ -23,23 +23,7 @@ export default function ConfirmarCarrito() {
   const [dataContext, setDataContext] = useState({});
 
   useEffect(() => {
-    /* if (window.localStorage) {
-      window.addEventListener(
-        "storage",
-        (event) => {
-          if (event.storageArea === localStorage) {
-            if (
-              window.localStorage.getItem("formUser") !== undefined &&
-              window.localStorage.getItem("formUser")
-            ) {
-              data = JSON.parse(localStorage.getItem("formUser"));
-              setDataContext(data);
-            }
-          }
-        },
-        false
-      );
-    }*/
+ 
 
     if (localStorage) {
       //Verificamos si soporta la caché local

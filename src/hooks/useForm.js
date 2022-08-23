@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import FormContext from "../context/formContext";
 
-export const UseForm = (initialForm, validateForm) => {
+export const UseForm = (initialForm, validateForm, amountToPay) => {
 
     const { formContext, handleForm } = useContext(FormContext);
 
@@ -26,11 +26,11 @@ export const UseForm = (initialForm, validateForm) => {
   };
   const handleBlur = (e) => {
     handleChange(e);
-    setErrors(validateForm(form));
+    setErrors(validateForm(form, amountToPay));
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    setErrors(validateForm(form));
+    setErrors(validateForm(form, amountToPay));
     if (Object.keys(errors).length === 0) {
       setLoading(true);
       handleSend(form);

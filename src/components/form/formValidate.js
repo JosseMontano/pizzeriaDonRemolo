@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
+
 import { UseForm } from "../../hooks/useForm";
+
 const initialForm = {
   direction: "",
   floor: "",
@@ -9,7 +11,7 @@ const initialForm = {
   amountPay: "",
 };
 
-const validationsForm = (form) => {
+const validationsForm = (form, amountToPay) => {
   let errors = {};
   //expresions regulars
   let regexName = /^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]+$/;
@@ -32,16 +34,17 @@ const validationsForm = (form) => {
       "El campo 'Con cuanto vas a pagar' es requerido y solo acepta numeros";
   }
   if (isNaN(form.amountPay)) {
+    errors.amountPay = "El campo 'Con cuanto vas a pagar' solo acepta numeros";
+  }
+  if (form.amountPay < amountToPay) {
     errors.amountPay =
-      "El campo 'Con cuanto vas a pagar' solo acepta numeros";
+      "El campo 'Con cuanto vas a pagar' tiene que ser mayor al precio a pagar";
   }
   if (isNaN(form.floor)) {
-    errors.floor =
-      "El campo 'Piso' solo acepta numeros";
+    errors.floor = "El campo 'Piso' solo acepta numeros";
   }
   if (form.floor < 0 || form.floor > 100) {
-    errors.floor =
-      "El campo 'Piso' solo acepta valores entre 1 y 99";
+    errors.floor = "El campo 'Piso' solo acepta valores entre 1 y 99";
   }
   return errors;
 };
@@ -50,7 +53,7 @@ let styles = {
   color: "#dc3545",
 };
 
-const formValidate = () => {
+const FormValidate = ({ totalSta }) => {
   const {
     form,
     errors,
@@ -59,7 +62,7 @@ const formValidate = () => {
     handleChange,
     handleBlur,
     handleSubmit,
-  } = UseForm(initialForm, validationsForm);
+  } = UseForm(initialForm, validationsForm, totalSta);
 
   return (
     <>
@@ -127,4 +130,4 @@ const formValidate = () => {
   );
 };
 
-export default formValidate;
+export default FormValidate;
