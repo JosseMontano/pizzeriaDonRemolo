@@ -31,6 +31,18 @@ const validationsForm = (form) => {
     errors.amountPay =
       "El campo 'Con cuanto vas a pagar' es requerido y solo acepta numeros";
   }
+  if (isNaN(form.amountPay)) {
+    errors.amountPay =
+      "El campo 'Con cuanto vas a pagar' solo acepta numeros";
+  }
+  if (isNaN(form.floor)) {
+    errors.floor =
+      "El campo 'Piso' solo acepta numeros";
+  }
+  if (form.floor < 0 || form.floor > 100) {
+    errors.floor =
+      "El campo 'Piso' solo acepta valores entre 1 y 99";
+  }
   return errors;
 };
 let styles = {
@@ -48,8 +60,6 @@ const formValidate = () => {
     handleBlur,
     handleSubmit,
   } = UseForm(initialForm, validationsForm);
-
-
 
   return (
     <>
@@ -75,7 +85,7 @@ const formValidate = () => {
         {errors.floor && <p style={styles}>{errors.floor}</p>}
         <p>Puerta</p>
         <input
-          placeholder="Ej:A"
+          placeholder="Ej:A o 3"
           name="gate"
           onBlur={handleBlur}
           onChange={handleChange}
@@ -102,7 +112,7 @@ const formValidate = () => {
         {errors.nameAndLast && <p style={styles}>{errors.nameAndLast}</p>}
         <p>¿Con cuanto vas a pagar?</p>
         <input
-          placeholder="Ej: $400"
+          placeholder="Ej: 400"
           name="amountPay"
           onBlur={handleBlur}
           onChange={handleChange}
