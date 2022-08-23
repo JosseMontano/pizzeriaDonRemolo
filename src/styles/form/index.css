@@ -28,7 +28,7 @@
   }
   
   .ContainerForm {
-    width: 558px;
+    width: auto;
     min-height: 453px;
     align-items: center;
     background: #ffffff;
