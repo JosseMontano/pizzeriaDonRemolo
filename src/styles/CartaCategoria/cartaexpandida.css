@@ -19,7 +19,6 @@
 .carta-imagen {
     object-position: center;
     height: 170px;
-    object-fit: cover;
 }
 
 .descripcion-container {

@@ -1,12 +1,22 @@
 import IconoEditar from "../icons/iconoEditar";
 import FormContext from "../../context/formContext";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 
 export const DetalleEnvio = ({ data }) => {
-  const lengthForm = Object.entries(data).length;
+  var lengthForm;
+useEffect(() => {
+  if(data.length > 0){
+    lengthForm = Object.entries(data).length;
+  } else{
+    lengthForm=0;
+  }
+}, [])
+
   return (
-    <div className="detailsSend">
+    <>
+     {lengthForm != 0? (
+      <div className="detailsSend">
       <h3>Detalle del envío</h3>
       <div className="soondetailsSend">
         <div>
@@ -18,6 +28,11 @@ export const DetalleEnvio = ({ data }) => {
           <p>{data.amountPay}</p>
           <h4>forma de entrega</h4>
           <p>Delivery</p>
+          <hr />
+          <p>
+            Recuerda que el pago es solo en efectivo y el total a pagar no
+            incluye el delivery
+          </p>
         </div>
         <div className="grandSoondetailsSend">
           <div>
@@ -41,5 +56,8 @@ export const DetalleEnvio = ({ data }) => {
         </div>
       </div>
     </div>
+    ) : (<p>vacio</p>)}
+    </>
+   
   );
 };

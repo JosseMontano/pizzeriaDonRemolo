@@ -41,10 +41,22 @@ export default function MostrarApi(props) {
     if (terminoBusqueda === "") setNombreProducto(auxCat);
   };
   let nombreCategoria = nombreProducto;
+  var formUser = {"direction":"No definido","floor":"No definido","gate":"No definido","aditional":"No definido","nameAndLast":"No definido","amountPay":"No definido"};;
   useEffect(() => {
     fetchData(0);
+    if (window.localStorage) {
+      window.addEventListener('storage', event => {
+        if (event.storageArea === localStorage) {
+          if (window.localStorage.getItem('Sidebar') !== undefined
+            && window.localStorage.getItem('Sidebar')
+          ) {
+            formUser = JSON.parse(localStorage.getItem("formUser"));
+          }
+        }
+      }, false);
+    }
+
   }, []);
-  var formUser = JSON.parse(localStorage.getItem("formUser")); //obtener el usuario
   return (
     <>
       <div className="categorias-container xl:flex xl:items-center xl:justify-center xl:ml-[110px] desktop:mx-[130px]">

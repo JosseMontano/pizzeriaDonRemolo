@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 import ModalOrderSuccess from "./modalOrderSuccess";
 import { UseModalOrderSuccess } from "./useModalOrderSuccess";
 import { useEffect, useState } from "react";
-import FormContext from '../../context/formContext'
+import FormContext from "../../context/formContext";
 import EmptyContext from "../../context/emptyContext";
 import { useContext } from "react";
 export default function ConfirmarCarrito() {
@@ -18,25 +18,67 @@ export default function ConfirmarCarrito() {
     openModal1();
   };
   const [isOpenModal1, openModal1, closeModal1] = UseModalOrderSuccess(false);
-  const {formContext, handleForm} = useContext(FormContext);
+  const { formContext, handleForm } = useContext(FormContext);
+  var data;
+  const [dataContext, setDataContext] = useState({});
+
   useEffect(() => {
+    /* if (window.localStorage) {
+      window.addEventListener(
+        "storage",
+        (event) => {
+          if (event.storageArea === localStorage) {
+            if (
+              window.localStorage.getItem("formUser") !== undefined &&
+              window.localStorage.getItem("formUser")
+            ) {
+              data = JSON.parse(localStorage.getItem("formUser"));
+              setDataContext(data);
+            }
+          }
+        },
+        false
+      );
+    }*/
+
+    if (localStorage) {
+      //Verificamos si soporta la caché local
+      //Como Saber si existe Sidebar
+      if (
+        localStorage.getItem("formUser") !== undefined &&
+        localStorage.getItem("formUser")
+      ) {
+        data = JSON.parse(localStorage.getItem("formUser"));
+        setDataContext(data);
+      } else {
+        data = {
+          direction: "No definido",
+          floor: "No definido",
+          gate: "No definido",
+          aditional: "No definido",
+          nameAndLast: "No definido",
+          amountPay: "No definido",
+        };
+        setDataContext(data);
+      }
+    }
+
     if (shoppings.length < 1) handleEmpty();
     else handleFull();
   }, [shoppings]);
 
-  var data = JSON.parse(localStorage.getItem('formUser')) //obtener el usuario
-//var data=formContext;
+  //obtener el usuario
+  //var data=formContext;
   return (
     <>
       <ModalOrderSuccess
         isOpen={isOpenModal1}
         closeModal={closeModal1}
-        data={data}
+        data={dataContext}
         shoppings={shoppings}
         urlImg={"./imagenes/iconos/congratulations.png"}
         msgBtn="ver pedido"
       >
-
         <h2>Felicitaciones</h2>
         <p>
           El pedido será enviado a nuestro whatsapp. El pago se realiza en
@@ -60,13 +102,13 @@ export default function ConfirmarCarrito() {
             </>
           ))}
         </div>
-        <DetalleEnvio data={data} />
+        <DetalleEnvio data={dataContext} />
       </div>
       <BotonContinuarItems
-        data={data}
+        data={dataContext}
         sendOrder={sendOrder}
         text={"Finalizar mi pedido"}
-        to={'/Carrito'}
+        to={"/Carrito"}
         sendWhatsapp={true}
       />
     </>
