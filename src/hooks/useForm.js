@@ -11,7 +11,10 @@ export const UseForm = (initialForm, validateForm) => {
   const [response, setResponse] = useState(null);
 
   const handleSend = async (form) => {
-    handleForm(form);
+    //handleForm(form);
+    alert('enviado');
+    console.log(form)
+    localStorage.setItem('formUser', JSON.stringify(form)) 
   };
 
   const handleChange = (e) => {

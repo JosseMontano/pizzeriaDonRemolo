@@ -69,15 +69,15 @@ export default function MostrarApi(props) {
       </div>
       <NombreCuerpoCategoria nombreCategoria={nombreCategoria} />
 
-      <FiltradoBuscador
-        busqueda={busqueda}
-        datosPizza={datosPizza}
-        datosPizzaFull={datosPizzaFull}
-      />
+  
 
       {datosPizzaFull.length === 0 && flag ? (
         <NotFound />
-      ) :<p style={{display:"none"}}>SI HAY</p> }
+      ) :    <FiltradoBuscador
+      busqueda={busqueda}
+      datosPizza={datosPizza}F
+      datosPizzaFull={datosPizzaFull}
+    /> }
 
       {shoppings.length > 0 ? (
         Object.entries(formUser).length === 0 ? (

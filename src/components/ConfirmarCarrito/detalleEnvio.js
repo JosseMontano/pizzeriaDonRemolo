@@ -6,9 +6,9 @@ import { NavLink } from "react-router-dom";
 export const DetalleEnvio = ({ data }) => {
   var lengthForm;
 useEffect(() => {
-  if(data.length > 0){
+  if(Object.entries(data).length > 0){
     lengthForm = Object.entries(data).length;
-  } else{
+  }else{
     lengthForm=0;
   }
 }, [])
@@ -44,14 +44,14 @@ useEffect(() => {
             <p className="descDetailSend">{data.gate}</p>
           </div>
           <div className="btnEditDetail">
-            {lengthForm > 0 && (
+            
               <NavLink exact to="/formulario">
                 <p>
                   Editar
                   <IconoEditar />
                 </p>
               </NavLink>
-            )}
+   
           </div>
         </div>
       </div>
