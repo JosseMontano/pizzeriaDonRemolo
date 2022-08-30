@@ -25,7 +25,7 @@ const ModalOrderSuccess = ({
     }
     messageNew = message.substring(0, message.length - 2);
     messageNew += ` lo antes posible, Mi dirección es: ${data.direction} voy a pagar con ${data.amountPay}. ¡Gracias! `;
-    let url = `https://api.whatsapp.com/send?phone=59177091208`;
+    let url = `https://api.whatsapp.com/send?phone=5491173616685`;
     url += `&text=${encodeURI(messageNew)}&app_absent=0`;
     window.open(url, "_blank");
   };
