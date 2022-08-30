@@ -1,5 +1,4 @@
 .barra-categorias{
-    width: 100%;
     display: flex;
     flex-wrap: wrap;
     align-content: space-around;
@@ -8,6 +7,6 @@
 
 @media screen and (min-width:1920px) {
     .categorias-container {
-        margin-left: 190px;
+        margin: auto;
     }
  }

@@ -68,6 +68,8 @@ const FormValidate = ({ totalSta }) => {
     <>
       <form onSubmit={handleSubmit} className="ContainerForm">
         <h2>Detalles del envío</h2>
+        <div className="p1-detalle">
+        <div>
         <p>Dirección</p>
         <input
           placeholder="Ej:9 de Julio 2500"
@@ -77,8 +79,10 @@ const FormValidate = ({ totalSta }) => {
           value={form.direction}
         ></input>
         {errors.direction && <p style={styles}>{errors.direction}</p>}
+        </div>
+        <div>
         <p>Piso</p>
-        <input
+        <input className="piso-dir"
           placeholder="Ej:3"
           name="floor"
           onBlur={handleBlur}
@@ -86,17 +90,22 @@ const FormValidate = ({ totalSta }) => {
           value={form.floor}
         ></input>
         {errors.floor && <p style={styles}>{errors.floor}</p>}
+        </div>
+        <div>
         <p>Puerta</p>
-        <input
-          placeholder="Ej:A o 3"
+        <input className="puerta-dir"
+          placeholder="Ej:A"
           name="gate"
           onBlur={handleBlur}
           onChange={handleChange}
           value={form.gate}
         ></input>
         {errors.gate && <p style={styles}>{errors.gate}</p>}
+        </div>
+        </div>
+
         <p>Indicación adicional</p>
-        <input
+        <input class="w-full"
           placeholder="Ej: Casa con rejas verdes"
           name="aditional"
           onBlur={handleBlur}
@@ -104,8 +113,9 @@ const FormValidate = ({ totalSta }) => {
           value={form.aditional}
         ></input>
         {errors.aditional && <p style={styles}>{errors.aditional}</p>}
+        <br/>
         <p>Nombre y apellido</p>
-        <input
+        <input className="w-full"
           placeholder="Ej: Juan perez"
           name="nameAndLast"
           onBlur={handleBlur}
@@ -114,15 +124,14 @@ const FormValidate = ({ totalSta }) => {
         ></input>
         {errors.nameAndLast && <p style={styles}>{errors.nameAndLast}</p>}
         <p>¿Con cuanto vas a pagar?</p>
-        <input
-          placeholder="Ej: 400"
+        <input class="w-full"
+          placeholder="Ej: $400"
           name="amountPay"
           onBlur={handleBlur}
           onChange={handleChange}
           value={form.amountPay}
         ></input>
         {errors.amountPay && <p style={styles}>{errors.amountPay}</p>}
-        <br />
         <br />
         <button>Guardar</button>
       </form>
