@@ -21,7 +21,7 @@ const ModalOrderSuccess = ({
     var messageNew;
 
     for (let shopp of shoppings) {
-      message += `${shopp.title}, `;
+      message += `${shopp.decription}, `;
     }
     messageNew = message.substring(0, message.length - 2);
     messageNew += ` lo antes posible, Mi dirección es: ${data.direction} voy a pagar con ${data.amountPay}. ¡Gracias! `;

@@ -21,6 +21,7 @@ export const CartaExpandida = ({ handleModal, ...props }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+
   const handleText = (val) => {
     setAclaracion(val);
   };
