@@ -75,7 +75,7 @@ export default function MostrarApi(props) {
         <NotFound />
       ) :    <FiltradoBuscador
       busqueda={busqueda}
-      datosPizza={datosPizza}F
+      datosPizza={datosPizza}
       datosPizzaFull={datosPizzaFull}
     /> }
 

@@ -33,7 +33,7 @@ export default function CartaMenu(props) {
       >
         <div className="contanedorimagen_carta">
           <img
-            src={"/imagenes/" + props.imagenCarta}
+            src={props.imagenCarta}
             alt={props.imagenCarta}
             className="object-fill border-solid rounded-xl"
           />
