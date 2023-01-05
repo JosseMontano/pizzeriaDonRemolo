@@ -1,7 +1,7 @@
 import NombreCuerpoCategoria from "./nombreCuerpoCategoria";
 import Categoria from "./categoria";
 import { useEffect, useState } from "react";
-import { axios, url } from "./../../services/http";
+import { axios, jsonData, url } from "./../../services/http";
 import Buscador from "./buscador";
 import { useSelector } from "react-redux";
 import BotonContinuarItems from "../ConfirmarCarrito/BotonContinuarItems";
@@ -17,45 +17,60 @@ export default function MostrarApi(props) {
   const shoppings = useSelector((state) => state.shoppings);
   const [auxCat, setAuxCat] = useState("");
   const [flag, setFlag] = useState(false);
+
+  const datosApi = jsonData;
   const fetchData = async (sendid) => {
     props.cats.map((cat) =>
       cat.id === sendid ? (cat.state = true) : (cat.state = false)
     );
-    const datosApi = await axios.get(
+    /*     const datosApi = await axios.get(
       `${url}buscarCategoria?categoriaId=${sendid + 1}`
-    );
-    setDatosPizza(datosApi.data.productos);
-    setNombreProducto(datosApi.data.nombre);
-    setAuxCat(datosApi.data.nombre);
+    ); */
+
+    setDatosPizza(datosApi);
+    setNombreProducto(datosApi.nombre);
+    setAuxCat(datosApi.nombre);
   };
 
   const filtrar = async (terminoBusqueda) => {
-    const datosApi = await axios.get(
+    /*    const datosApi = await axios.get(
       `${url}buscarProductoConNombre?consulta=${terminoBusqueda}`
-    );
-    setDatosPizzaFull(datosApi.data.productos);
+    ); */
+    const datosApi = jsonData;
+    console.log(jsonData);
+    setDatosPizzaFull(datosApi);
     setBusqueda(terminoBusqueda);
-    console.log(datosApi.data.productos);
     setFlag(true);
     setNombreProducto(`Todos los productos con la palabra ${terminoBusqueda}`);
     if (terminoBusqueda === "") setNombreProducto(auxCat);
   };
   let nombreCategoria = nombreProducto;
-  var formUser = {"direction":"No definido","floor":"No definido","gate":"No definido","aditional":"No definido","nameAndLast":"No definido","amountPay":"No definido"};;
+  var formUser = {
+    direction: "No definido",
+    floor: "No definido",
+    gate: "No definido",
+    aditional: "No definido",
+    nameAndLast: "No definido",
+    amountPay: "No definido",
+  };
   useEffect(() => {
     fetchData(0);
     if (window.localStorage) {
-      window.addEventListener('storage', event => {
-        if (event.storageArea === localStorage) {
-          if (window.localStorage.getItem('Sidebar') !== undefined
-            && window.localStorage.getItem('Sidebar')
-          ) {
-            formUser = JSON.parse(localStorage.getItem("formUser"));
+      window.addEventListener(
+        "storage",
+        (event) => {
+          if (event.storageArea === localStorage) {
+            if (
+              window.localStorage.getItem("Sidebar") !== undefined &&
+              window.localStorage.getItem("Sidebar")
+            ) {
+              formUser = JSON.parse(localStorage.getItem("formUser"));
+            }
           }
-        }
-      }, false);
+        },
+        false
+      );
     }
-
   }, []);
   return (
     <>
@@ -69,15 +84,15 @@ export default function MostrarApi(props) {
       </div>
       <NombreCuerpoCategoria nombreCategoria={nombreCategoria} />
 
-  
-
       {datosPizzaFull.length === 0 && flag ? (
         <NotFound />
-      ) :    <FiltradoBuscador
-      busqueda={busqueda}
-      datosPizza={datosPizza}
-      datosPizzaFull={datosPizzaFull}
-    /> }
+      ) : (
+        <FiltradoBuscador
+          busqueda={busqueda}
+          datosPizza={datosPizza}
+          datosPizzaFull={datosPizzaFull}
+        />
+      )}
 
       {shoppings.length > 0 ? (
         Object.entries(formUser).length === 0 ? (

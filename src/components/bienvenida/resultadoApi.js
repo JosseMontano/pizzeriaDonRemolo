@@ -4,10 +4,10 @@ export default function ApiRest (props) {
     return (
       <CartaMenu
         id={props.id}
-        tituloCarta={props.nombre}
-        descripcionCarta={props.descripcion}
-        imagenCarta={props.imagen_url}
-        precioCarta={props.precio}
+        tituloCarta={props.tituloCarta}
+        descripcionCarta={props.descripcionCarta}
+        imagenCarta={props.imagenCarta}
+        precioCarta={props.precioCarta}
       />
     );
   };

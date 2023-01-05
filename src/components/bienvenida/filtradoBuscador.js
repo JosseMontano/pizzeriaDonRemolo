@@ -4,7 +4,7 @@ import ApiRest from "./resultadoApi";
 const FiltradoBuscador = ({ busqueda, datosPizza, datosPizzaFull }) => {
   return (
     <div className="containerCartaPrincipal">
-      {busqueda === ""
+         {busqueda === ""
         ? datosPizza
             .filter((data) => {
               return data;
@@ -20,6 +20,9 @@ const FiltradoBuscador = ({ busqueda, datosPizza, datosPizzaFull }) => {
             .map((data) => {
               return <ApiRest {...data} />;
             })}
+  {/*     {datosPizza.map((v) => {
+        return <ApiRest {...v} />;
+      })} */}
     </div>
   );
 };
