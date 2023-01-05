@@ -54,7 +54,6 @@ const bienvenida = () => {
   return (
     <>
       <Titulo />
-      {/*<HeaderCarrito />*/}
       <Descripcion />
       <MostrarApi cats={cats} />
     </>
