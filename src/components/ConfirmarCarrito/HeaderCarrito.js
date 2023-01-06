@@ -1,33 +1,94 @@
-import { useNavigate } from "react-router-dom";
 import "../../styles/ConfirmarCarrito/HeaderCarrito.css";
 import "../../styles/App.css";
 import { NavLink } from "react-router-dom";
+import styled from "styled-components";
 
+const Container = styled.div`
+  background-color: #ffff;
+
+  @media screen and (min-width: 360px) {
+    background-color: #e74423;
+  }
+  @media screen and (min-width: 1280px) {
+    background-color: #ffff;
+  }
+`;
+
+const ContainerSoon = styled.div`
+  margin-bottom: 4px;
+  height: 72px;
+  width: 100%;
+  background-color: #fff;
+  position: fixed;
+  top: 0;
+  z-index: 999;
+  box-shadow: 0px 16px 24px -18px rgba(0, 0, 0, 0.12);
+`;
+
+const Section = styled.section`
+  padding: 8;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  //xl:text-4xl xl:leading-7 2xl:8xl xl:tracking-wide
+  p span {
+    overflow: hidden;
+    margin-left: 10px;
+    color: #e74423;
+    font-family: Cera-Pro-Bold;
+    font-weight: bold;
+    display: block;
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+    position: absolute;
+    left: 98px;
+    top: 21px;
+  }
+`;
+
+const OrderSummary = styled.p`
+  color: #fff;
+  position: absolute;
+  left: 78px;
+  top: 25px;
+  font-family: medium;
+  visibility: hidden;
+`;
+
+const Btn = styled.button`
+  border-radius: 100%;
+  width: 10px;
+  height: 10px;
+  background-color: #fff;
+  position: absolute;
+  top: 18px;
+  left: 12px;
+  visibility: hidden;
+  svg {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    left: 8px;
+    top: 8px;
+  }
+`;
 export default function HeaderCarrito({ handleModal }) {
-  const navigate = useNavigate();
   const handleclick = () => {};
 
   return (
     <>
       <NavLink exact to="/">
-        <div className="fondo">
-          <div className=" mb-4 h-20 xl:h-[72px] xl:w-[100%] xl:bg-white xl:shadow-header xl:fixed xl:top-[0px] xl:z-[999]">
-            <section className=" p-3.5 flex items-start justify-start  sm:p-4 sm:flex sm:items-start sm:justify-start md:p-6 md:flex md:items-start md:justify-start lg:p-8  lg:flex lg:items-start lg:justify-start ">
-              <p className="hidden lg:ml-10 text-2xl sm:text-3xl md:text-4xl lg:text-4xl xl:text-4xl xl:font-bold xl:leading-7 xl:block 2xl:8xl xl:tracking-wide xl:absolute left-[98px] top-[21px]">
-                {" "}
+        <Container className="fondo">
+          <ContainerSoon className="">
+            <Section className="">
+              <p>
                 <span>Pizzería Don Rémolo</span>
               </p>
-              <p className="text-white absolute left-[78px] top-[25px] font-medium text-xl tracking-wider xl:hidden">
-                Resumen del pedido
-              </p>
-            </section>
+              <OrderSummary className="">Resumen del pedido</OrderSummary>
+            </Section>
             {/* LA FLECHA DE REGRESAR */}
-            <button
-              onClick={handleclick}
-              className="rounded-full w-10 h-10 bg-white absolute top-[18px] left-[12px] xl:hidden"
-            >
+            <Btn onClick={handleclick} className="">
               <svg
-                className="absolute w-[24px] h-[24px] left-[8px] top-[8px]"
                 width="24"
                 height="24"
                 viewBox="0 0 24 24"
@@ -39,11 +100,11 @@ export default function HeaderCarrito({ handleModal }) {
                   fill="#E74423"
                 />
               </svg>
-            </button>
+            </Btn>
 
             {/* FLECHA  */}
-          </div>
-        </div>
+          </ContainerSoon>
+        </Container>
       </NavLink>
     </>
   );

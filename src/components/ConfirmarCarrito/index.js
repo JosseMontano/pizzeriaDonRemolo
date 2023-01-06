@@ -11,6 +11,7 @@ import { useEffect, useState } from "react";
 import FormContext from "../../context/formContext";
 import EmptyContext from "../../context/emptyContext";
 import { useContext } from "react";
+
 export default function ConfirmarCarrito() {
   const shoppings = useSelector((state) => state.shoppings);
   const { empty, handleEmpty, handleFull } = useContext(EmptyContext);
