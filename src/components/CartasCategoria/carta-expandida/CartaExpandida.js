@@ -8,19 +8,61 @@ import { ConfirmarPedido } from "./ConfirmarPedido";
 import { useContext, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { addShopp } from "../../../features/shopping/shoppingSlice";
-import { useNavigate } from "react-router-dom";
-
-import "../../../styles/CartaCategoria/cartaexpandida.css";
 import Swal from "sweetalert";
+import styled from "styled-components";
 
+const Container = styled.section`
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 72px;
+  background-color: rgba(28, 28, 28, 0.6);
+`;
+
+const CardBig = styled.form`
+  height: fit-content;
+  margin-top: 40px;
+`;
+
+const ContainerSoon = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 820px;
+  height: auto;
+  max-height: 800px;
+  background-color: #d8d7da;
+  article {
+    position: relative;
+  }
+`;
+
+const ContainerContent = styled.div`
+  border-top: 1px solid rgba(146, 146, 146, 0.1);
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  article {
+    padding: 16px;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    gap: 2px;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    grid-template-columns: 1fr 1fr;
+  }
+`;
 
 export const CartaExpandida = ({ handleModal, ...props }) => {
   const { contar } = useContext(AppContext);
   const shoppings = useSelector((state) => state.shoppings);
   const [aclaracion, setAclaracion] = useState("");
   const dispatch = useDispatch();
-  const navigate = useNavigate();
-
 
   const handleText = (val) => {
     setAclaracion(val);
@@ -46,28 +88,23 @@ export const CartaExpandida = ({ handleModal, ...props }) => {
     handleModal();
   };
   return (
-    <>
-      <section className="carta-expandida fixed top-0 left-0 bg-modal_bg">
-        <form className="carta-grande">
-          <div className="flex flex-col w-full max-w-[820px] h-auto max-h-[800px] bg-modal_bg">
-            <article className="img-contenedor relative">
-              <CartaImagen imagenCarta={props.imagenCarta} />
-              <BotonAtras
-                estilos="carta-boton-atras absolute top-2 right-2"
-                fn={handleModal}
-              />
+    <Container>
+      <CardBig>
+        <ContainerSoon>
+          <article>
+            <CartaImagen imagenCarta={props.imagenCarta} />
+            <BotonAtras fn={handleModal} />
+          </article>
+          <CartaDescripcion {...props} />
+          <ContainerContent>
+            <article>
+              <CantidadContenedor />
+              <AclaracionContenedor onChangeText={handleText} />
+              <ConfirmarPedido onChange={handleSubmit} />
             </article>
-            <CartaDescripcion {...props} />
-            <div className="aclaracion flex justify-center w-full">
-              <article className="aclaracion-container grid grid-rows-3 gap-2 w-full h-full bg-white sm:grid-rows-2 sm:grid-cols-2">
-                <CantidadContenedor />
-                <AclaracionContenedor onChangeText={handleText} />
-                <ConfirmarPedido onChange={handleSubmit} />
-              </article>
-            </div>
-          </div>
-        </form>
-      </section>
-    </>
+          </ContainerContent>
+        </ContainerSoon>
+      </CardBig>
+    </Container>
   );
 };

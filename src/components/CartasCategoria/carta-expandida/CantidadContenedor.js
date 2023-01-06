@@ -1,10 +1,23 @@
 import Contador from "./Contador";
-export const CantidadContenedor = () => {
+import styled from "styled-components";
 
-	return (
-		<section className="cantidad-contenedor grid grid-cols-2 sm:grid-cols-none sm:grid-rows-2">
-			<p className="text-text_clr">Cantidad</p>
-			<Contador />
-		</section>
-	);
+const Container = styled.section`
+  display: grid;
+  grid-template-columns: 1fr;
+  @media screen and (max-width: 550px) {
+	grid-template-columns: none;
+	grid-row: 1fr;
+  }
+  p{
+	color:#000;
+  }
+`;
+
+export const CantidadContenedor = () => {
+  return (
+    <Container>
+      <p>Cantidad</p>
+      <Contador />
+    </Container>
+  );
 };

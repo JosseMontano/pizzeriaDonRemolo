@@ -1,20 +1,38 @@
 import { useState } from "react";
-
+import styled from "styled-components";
+const Container = styled.section`
+  display: flex;
+  flex-direction: column;
+  gap: 1;
+  label {
+    width: max-content;
+    text-align: center;
+    font-weight: bold;
+  }
+`;
+const Input = styled.input`
+  width: 100%;
+  border-bottom: 1px solid gray;
+  &:focus {
+    border-bottom: 1px solid black;
+    outline: 0ch;
+  }
+`;
+const Small = styled.small`
+  text-align: end;
+`;
 export const AclaracionContenedor = ({ onChangeText }) => {
-  const [lengthAclaration, setLengthAclaration] = useState(0)
-	const handleAclaracion = (e) => {
-    if(e.target.value.trim() != ""){
+  const [lengthAclaration, setLengthAclaration] = useState(0);
+  const handleAclaracion = (e) => {
+    if (e.target.value.trim() != "") {
       onChangeText(e.target.value);
-      setLengthAclaration(e.target.value.length)
+      setLengthAclaration(e.target.value.length);
     }
-	}
+  };
   return (
-    <section className="aclaracion-contenedor flex flex-col gap-1">
-      <label className="w-max text-text_clr font-bold" htmlFor="aclaracion">
-        Aclaración sobre la comida 
-      </label>
-      <input
-        className="w-full border-b border-gray focus:outline-0 focus:border-b focus:border-black"
+    <Container>
+      <label>Aclaración sobre la comida</label>
+      <Input
         maxLength="100"
         type="text"
         name="aclaracion"
@@ -22,7 +40,7 @@ export const AclaracionContenedor = ({ onChangeText }) => {
         placeholder="Escribí aquí"
         onChange={handleAclaracion}
       />
-      <small class="aclaracion-contador text-desc_clr">{lengthAclaration}/100</small>
-    </section>
+      <Small>{lengthAclaration}/100</Small>
+    </Container>
   );
 };

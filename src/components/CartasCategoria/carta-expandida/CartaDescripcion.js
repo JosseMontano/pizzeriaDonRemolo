@@ -1,13 +1,39 @@
-import React from 'react'
+import React from "react";
+import styled from "styled-components";
 
-export const CartaDescripcion = ({ tituloCarta, descripcionCarta, precioCarta }) => {
-	return (
-		<article className="descripcion-container flex flex-col justify-between h-32 bg-white">
-			<div>
-				<h3 className="text-[21px] text-text_clr font-bold">{tituloCarta}</h3>
-				<p className="text-[15px] text-desc_clr">{descripcionCarta}</p>
-			</div>
-			<p className="text-[25px] text-text_clr">${precioCarta}xUnidad</p>
-		</article>
-	);
+const Container = styled.article`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 122px;
+  background-color: #fff;
+  padding: 16px;
+  p {
+    font-size: 15px;
+    color: #000;
+  }
+`;
+const H3 = styled.h3`
+  font-size: 21px;
+  font-weight: bold;
+  color: #000;
+`;
+const P = styled.p`
+  font-size: 25px;
+  color: #000;
+`;
+export const CartaDescripcion = ({
+  tituloCarta,
+  descripcionCarta,
+  precioCarta,
+}) => {
+  return (
+    <Container>
+      <div>
+        <H3>{tituloCarta}</H3>
+        <p>{descripcionCarta}</p>
+      </div>
+      <P>${precioCarta}xUnidad</P>
+    </Container>
+  );
 };
