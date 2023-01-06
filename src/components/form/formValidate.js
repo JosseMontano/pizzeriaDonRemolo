@@ -1,7 +1,55 @@
-import React, { useContext, useEffect, useState } from "react";
-
+import React from "react";
 import { UseForm } from "../../hooks/useForm";
+import styled from "styled-components";
 
+const ContainerForm = styled.form`
+  width: auto;
+  min-height: 453px;
+  align-items: center;
+  background: #ffffff;
+  box-shadow: 0px -1px 2px rgba(0, 0, 0, 0.05), 1px 4px 6px rgba(0, 0, 0, 0.08);
+  border-radius: 4px;
+  padding: 2rem;
+  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: flex-start;
+  line-height: 1.8rem;
+  input {
+    margin: 8px 0;
+    border-bottom: 1px solid #000;
+  }
+  .full {
+    width: 100%;
+  }
+`;
+
+const Btn = styled.button`
+  width: 150px;
+  margin: 20px auto auto;
+  padding: 10px;
+  color: white;
+  border: 1px solid white;
+  border-radius: 20px;
+  background: #e63c19;
+  transition: 0.5s;
+  &:hover {
+    transform: scale(1.1);
+  }
+`;
+const ContainerDetail = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 10px;
+`;
+
+const Input = styled.input`
+  width: 2.3rem;
+`;
 const initialForm = {
   direction: "",
   floor: "",
@@ -65,77 +113,78 @@ const FormValidate = ({ totalSta }) => {
   } = UseForm(initialForm, validationsForm, totalSta);
 
   return (
-    <>
-      <form onSubmit={handleSubmit} className="ContainerForm">
-        <h2>Detalles del envío</h2>
-        <div className="p1-detalle">
+    <ContainerForm onSubmit={handleSubmit}>
+      <h2>Detalles del envío</h2>
+      <ContainerDetail>
         <div>
-        <p>Dirección</p>
-        <input
-          placeholder="Ej:9 de Julio 2500"
-          name="direction"
-          onBlur={handleBlur}
-          onChange={handleChange}
-          value={form.direction}
-        ></input>
-        {errors.direction && <p style={styles}>{errors.direction}</p>}
-        </div>
-        <div>
-        <p>Piso</p>
-        <input className="piso-dir"
-          placeholder="Ej:3"
-          name="floor"
-          onBlur={handleBlur}
-          onChange={handleChange}
-          value={form.floor}
-        ></input>
-        {errors.floor && <p style={styles}>{errors.floor}</p>}
+          <p>Dirección</p>
+          <input
+            placeholder="Ej:9 de Julio 2500"
+            name="direction"
+            onBlur={handleBlur}
+            onChange={handleChange}
+            value={form.direction}
+          ></input>
+          {errors.direction && <p style={styles}>{errors.direction}</p>}
         </div>
         <div>
-        <p>Puerta</p>
-        <input className="puerta-dir"
-          placeholder="Ej:A"
-          name="gate"
-          onBlur={handleBlur}
-          onChange={handleChange}
-          value={form.gate}
-        ></input>
-        {errors.gate && <p style={styles}>{errors.gate}</p>}
+          <p>Piso</p>
+          <Input
+            placeholder="Ej:3"
+            name="floor"
+            onBlur={handleBlur}
+            onChange={handleChange}
+            value={form.floor}
+          ></Input>
+          {errors.floor && <p style={styles}>{errors.floor}</p>}
         </div>
+        <div>
+          <p>Puerta</p>
+          <Input
+            placeholder="Ej:A"
+            name="gate"
+            onBlur={handleBlur}
+            onChange={handleChange}
+            value={form.gate}
+          ></Input>
+          {errors.gate && <p style={styles}>{errors.gate}</p>}
         </div>
+      </ContainerDetail>
 
-        <p>Indicación adicional</p>
-        <input class="w-full"
-          placeholder="Ej: Casa con rejas verdes"
-          name="aditional"
-          onBlur={handleBlur}
-          onChange={handleChange}
-          value={form.aditional}
-        ></input>
-        {errors.aditional && <p style={styles}>{errors.aditional}</p>}
-        <br/>
-        <p>Nombre y apellido</p>
-        <input className="w-full"
-          placeholder="Ej: Juan perez"
-          name="nameAndLast"
-          onBlur={handleBlur}
-          onChange={handleChange}
-          value={form.nameAndLast}
-        ></input>
-        {errors.nameAndLast && <p style={styles}>{errors.nameAndLast}</p>}
-        <p>¿Con cuanto vas a pagar?</p>
-        <input class="w-full"
-          placeholder="Ej: $400"
-          name="amountPay"
-          onBlur={handleBlur}
-          onChange={handleChange}
-          value={form.amountPay}
-        ></input>
-        {errors.amountPay && <p style={styles}>{errors.amountPay}</p>}
-        <br />
-        <button>Guardar</button>
-      </form>
-    </>
+      <p>Indicación adicional</p>
+      <input
+        class="full"
+        placeholder="Ej: Casa con rejas verdes"
+        name="aditional"
+        onBlur={handleBlur}
+        onChange={handleChange}
+        value={form.aditional}
+      ></input>
+      {errors.aditional && <p style={styles}>{errors.aditional}</p>}
+      <br />
+      <p>Nombre y apellido</p>
+      <input
+        className="full"
+        placeholder="Ej: Juan perez"
+        name="nameAndLast"
+        onBlur={handleBlur}
+        onChange={handleChange}
+        value={form.nameAndLast}
+      ></input>
+      {errors.nameAndLast && <p style={styles}>{errors.nameAndLast}</p>}
+      <p>¿Con cuanto vas a pagar?</p>
+      <input
+        class="full"
+        placeholder="Ej: $400"
+        name="amountPay"
+        onBlur={handleBlur}
+        onChange={handleChange}
+        value={form.amountPay}
+      ></input>
+      {errors.amountPay && <p style={styles}>{errors.amountPay}</p>}
+      <br />
+      <Btn>Guardar</Btn>
+    </ContainerForm>
   );
 };
 

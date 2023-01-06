@@ -10,7 +10,7 @@ html,body{
   background-color: #F3F2F2;
 }
 
- html, img, video, iframe { filter: invert(1) hue-rotate(180deg) } 
+/*  html, img, video, iframe { filter: invert(1) hue-rotate(180deg) }  */
 
 .App {
   text-align: center;

@@ -127,7 +127,6 @@ export default function BotonContinuarItems({
       <ContainerBtnShopp>
         <Btn>
           <NavLink
-            className="btnContinue"
             exact
             to={to}
             onClick={
