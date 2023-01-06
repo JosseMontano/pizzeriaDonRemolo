@@ -1,13 +1,31 @@
 import NombreCuerpoCategoria from "./nombreCuerpoCategoria";
 import Categoria from "./categoria";
 import { useEffect, useState } from "react";
-import { axios, jsonData, url } from "./../../services/http";
+import { jsonData } from "./../../services/http";
 import Buscador from "./buscador";
 import { useSelector } from "react-redux";
 import BotonContinuarItems from "../ConfirmarCarrito/BotonContinuarItems";
-import "../../styles/cuerpoCategoria/barraCategoria.css";
 import FiltradoBuscador from "./filtradoBuscador";
 import NotFound from "../compartidos/notFound";
+import styled from "styled-components";
+
+const ContainerCat = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+const BarraCategoriaCss = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  align-content: space-around;
+  padding: 0 20px;
+  @media screen and (min-width: 1920px) {
+    .categorias-container {
+      margin: auto;
+    }
+  }
+`;
 
 export default function MostrarApi(props) {
   const [datosPizza, setDatosPizza] = useState([]);
@@ -17,15 +35,12 @@ export default function MostrarApi(props) {
   const shoppings = useSelector((state) => state.shoppings);
   const [auxCat, setAuxCat] = useState("");
   const [flag, setFlag] = useState(false);
-
   const datosApi = jsonData;
+
   const fetchData = async (sendid) => {
     props.cats.map((cat) =>
       cat.id === sendid ? (cat.state = true) : (cat.state = false)
     );
-    /*     const datosApi = await axios.get(
-      `${url}buscarCategoria?categoriaId=${sendid + 1}`
-    ); */
 
     setDatosPizza(datosApi);
     setNombreProducto(datosApi.nombre);
@@ -33,9 +48,6 @@ export default function MostrarApi(props) {
   };
 
   const filtrar = async (terminoBusqueda) => {
-    /*    const datosApi = await axios.get(
-      `${url}buscarProductoConNombre?consulta=${terminoBusqueda}`
-    ); */
     const datosApi = jsonData;
     console.log(jsonData);
     setDatosPizzaFull(datosApi);
@@ -44,6 +56,7 @@ export default function MostrarApi(props) {
     setNombreProducto(`Todos los productos con la palabra ${terminoBusqueda}`);
     if (terminoBusqueda === "") setNombreProducto(auxCat);
   };
+
   let nombreCategoria = nombreProducto;
   var formUser = {
     direction: "No definido",
@@ -74,14 +87,15 @@ export default function MostrarApi(props) {
   }, []);
   return (
     <>
-      <div className="categorias-container xl:flex xl:items-center xl:justify-center xl:ml-[110px] desktop:mx-[130px]">
+      <ContainerCat>
         <Buscador datosPizza={datosPizza} filtrar={filtrar} />
-        <div className="barra-categorias">
+        <BarraCategoriaCss>
           {props.cats.map((cat) => (
             <Categoria cat={cat} onSubmit={fetchData} />
           ))}
-        </div>
-      </div>
+        </BarraCategoriaCss>
+      </ContainerCat>
+
       <NombreCuerpoCategoria nombreCategoria={nombreCategoria} />
 
       {datosPizzaFull.length === 0 && flag ? (
@@ -94,8 +108,8 @@ export default function MostrarApi(props) {
         />
       )}
 
-      {shoppings.length > 0 ? (
-        Object.entries(formUser).length === 0 ? (
+      {shoppings.length > 0 &&
+        (Object.entries(formUser).length === 0 ? (
           <BotonContinuarItems
             sendWhatsapp={false}
             to={"/formulario"}
@@ -107,10 +121,7 @@ export default function MostrarApi(props) {
             to={"/Carrito"}
             text={"Continuar con el pedido"}
           />
-        )
-      ) : (
-        <p style={{ display: "none" }}>vacio</p>
-      )}
+        ))}
     </>
   );
 }

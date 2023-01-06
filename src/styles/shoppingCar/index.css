@@ -67,63 +67,12 @@ line-height: 20px;
   top:90%;
 }
 
-.navShopp {
-  height: 72px;
-  width: 100%;
-  background-color: #FFFFFF;
-  box-shadow: 0px -1px 5px rgba(0, 0, 0, 0.15);
-  position: fixed;
-  bottom: 0px;
-  display: flex;
-  align-items: center;
-  justify-content:space-evenly;
-  flex-wrap: wrap;
-}
-@media screen and (max-width:455px){
-  .navShopp{
-    gap:1rem;
-    height: 122px;
-  }
-  .itemShopp{
-    margin-top: 10px;
-  }
-}
-.itemShopp span{
-  box-sizing: border-box;
-  font-size: 20px;
-  align-items: center;
-  padding: 4px 8px;
-  gap: 10px;
-  width: 25px;
-  height: 31px;
-  background: #E63C19;
-  border: 1px solid #E63C19;
-  border-radius: 100px;
-  color: #fff;
-  margin-left: 10px;
-}
-.btnContinue{
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  padding: 14px 24px;
-  gap: 10px;
-  width: 260px;
-  height: 48px;
-  background: #E63C19;
-  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12);
-  border-radius: 20px;
-  color: #fff;
-  transition: all 0.1s;
-}
-.btnContinue:hover{
-  transform: scale(1.07);
-}
 
-.containerBtnShopp span{
-  font-weight: bold;
-}
+
+
+
+
+
 .detailsSend{
   background-color: #ffffff;
 margin-left: 20px;

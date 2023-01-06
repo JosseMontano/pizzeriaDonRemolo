@@ -1,9 +1,0 @@
-.NotFound{
-    display: grid;
-    justify-content: center;
-    margin-top: -20px;
-}
-.NotFound h2{
-    font-size: 30px;
-    font-weight: bold;
-}

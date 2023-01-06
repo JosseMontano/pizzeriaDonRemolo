@@ -1,31 +1,53 @@
 import React from "react";
+import styled from "styled-components";
+
+const Container = styled.div`
+  cursor: pointer;
+  div {
+    height: 48px;
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12);
+    border-style: solid;
+    border-color: #e5e7eb;
+    border-radius: 20px;
+    padding: 8px 16px 8px 8px;
+    margin-right: 10px;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    &:hover {
+      box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.2);
+    }
+  }
+`;
+
+const Img = styled.img`
+  background-color: #e9f3f5;
+  border-radius: 50%;
+  width: 32px;
+`;
+
+const Span = styled.span`
+  margin-left: 8px;
+  text-align: center;
+  font-size: 16px;
+`;
 
 const categoria = (props) => {
   const handleSubmit = (id) => {
     props.onSubmit(id);
   };
   return (
-    <>
-      <div className="cursor-pointer" key={props.cat.id}>
-        <div
-          style={props.cat.state ? props.cat.stylesDiv : {}}
-          className="h-[44px] shadow-botondefault hover:shadow-botonhover border-solid border rounded-[20px] pt-[8px] pb-[8px] pl-[8px] pr-[16px] xl:h-[48px] xl:relative xl:-top-[15px] bg-white mr-[8px] mt-[16px]"
-          onClick={() => handleSubmit(props.cat.id)}
-        >
-          <img
-            className="backgroundImgCat w-[32px] h-[32px] xl:w-[27px] xl:h-[27px] xl:relative xl:-top-[2px]"
-            src={props.cat.state ? props.cat.imagenOn : props.cat.imagenOff}
-          />
-          <span
-            style={props.cat.state ? props.cat.stylesText : {}}
-            className="ml-8 text-center font-normal text-[16px] leading-[120%] relative -top-[30px] xl:relative xl:-top-[25px]"
-          >
-            {" "}
-            {props.cat.nombre}
-          </span>{" "}
-        </div>
+    <Container key={props.cat.id}>
+      <div
+        style={props.cat.state ? props.cat.stylesDiv : {}}
+        onClick={() => handleSubmit(props.cat.id)}
+      >
+        <Img src={props.cat.state ? props.cat.imagenOn : props.cat.imagenOff} />
+        <Span style={props.cat.state ? props.cat.stylesText : {}}>
+          {props.cat.nombre}
+        </Span>
       </div>
-    </>
+    </Container>
   );
 };
 
