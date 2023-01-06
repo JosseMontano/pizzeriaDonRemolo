@@ -4,6 +4,7 @@ import { useModal } from "../../hooks/useModal";
 import Modal from "./Modal";
 import Decrement from "../icons/decrement";
 import Increment from "../icons/increment";
+
 export default function ModalPedido({
   tituloCarta,
   descripcionCarta,

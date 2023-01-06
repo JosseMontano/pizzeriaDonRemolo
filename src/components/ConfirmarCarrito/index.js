@@ -61,7 +61,7 @@ export default function ConfirmarCarrito() {
         closeModal={closeModal1}
         data={dataContext}
         shoppings={shoppings}
-        urlImg={"./imagenes/iconos/congratulations.png"}
+        urlImg={"/assets/imagenes/iconos/congratulations.png"}
         msgBtn="ver pedido"
       >
         <h2>Felicitaciones</h2>

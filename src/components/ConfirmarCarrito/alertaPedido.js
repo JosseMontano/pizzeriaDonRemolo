@@ -140,7 +140,7 @@ export const AlertaPedido = ({ shop }) => {
         closeModal={closeModal1}
         data={shoppings}
         shoppings={shoppings}
-        urlImg={"./imagenes/iconos/warning.png"}
+        urlImg={"assets/imagenes/iconos/warning.png"}
         msgBtn={"Continuar con el pedido"}
         msgDelete={"Si eliminar todos"}
       >
