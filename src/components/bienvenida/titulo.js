@@ -1,4 +1,3 @@
-import "../../styles/header/titulo.css";
 import "../../styles/App.css";
 import { useContext } from "react";
 import ModalContext from "./../../context/modalContext";

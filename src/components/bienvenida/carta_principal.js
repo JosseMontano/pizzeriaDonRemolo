@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { createPortal } from "react-dom";
-import "../../styles/CartaCategoria/carta.css";
+import "../../styles/carta.css";
 import { CartaExpandida } from "../CartasCategoria/carta-expandida/CartaExpandida";
 
 const modalRoot = document.getElementById("modal");

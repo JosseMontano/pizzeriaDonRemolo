@@ -1,4 +1,3 @@
-import "../../styles/header/descripcion.css";
 import styled from "styled-components";
 import Icon from "../../assets/svg/ImagenHome.svg";
 

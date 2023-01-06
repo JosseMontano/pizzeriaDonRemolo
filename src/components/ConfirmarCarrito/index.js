@@ -1,7 +1,7 @@
 import BotonContinuarItems from "./BotonContinuarItems";
 import HeaderCarrito from "./HeaderCarrito";
 import { useSelector } from "react-redux";
-import "../../styles/shoppingCar/index.css";
+import "../../styles/index.css";
 import { DetalleEnvio } from "./detalleEnvio";
 import { AlertaPedido } from "./alertaPedido";
 import { Link } from "react-router-dom";
