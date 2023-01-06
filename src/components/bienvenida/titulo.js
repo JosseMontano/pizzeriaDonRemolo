@@ -6,7 +6,6 @@ import styled from "styled-components";
 
 const Container = styled.div`
   background-color: #fff;
-  /* height: 56px; */
   height: 72px;
   width: 100%;
   position: fixed;
