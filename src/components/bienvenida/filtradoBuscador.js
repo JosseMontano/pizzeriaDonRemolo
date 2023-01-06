@@ -54,16 +54,16 @@ const FiltradoBuscador = ({ busqueda, datosPizza, datosPizzaFull }) => {
             .filter((data) => {
               return data;
             })
-            .map((data) => {
-              return <ApiRest {...data} />;
+            .map((data, i) => {
+              return <ApiRest {...data} key={i} />;
             })
         : datosPizzaFull
             .filter((data) => {
               if (data.nombre.toLowerCase().includes(busqueda.toLowerCase()))
                 return data;
             })
-            .map((data) => {
-              return <ApiRest {...data} />;
+            .map((data, i) => {
+              return <ApiRest {...data} key={i} />;
             })}
     </Container>
   );

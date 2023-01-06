@@ -1,10 +1,6 @@
 import styled from "styled-components";
 
 const Container = styled.div`
-  @font-face {
-    font-family: Cera-Pro-Bold;
-    src: url("/public/font/Cera\ Pro\ Bold.otf");
-  }
   .nombreCategoria {
     font-family: Cera-Pro-Bold;
   }

@@ -2,18 +2,6 @@ import styled from "styled-components";
 import Icon from "../../assets/svg/ImagenHome.svg";
 
 const Container = styled.div`
-  @font-face {
-    font-family: Cera-Pro-Regular;
-    src: url("/public/font/Cera\ Pro\ Regular.otf");
-  }
-  @font-face {
-    font-family: Cera-Pro-Bold;
-    src: url("/public/font/Cera\ Pro\ Bold.otf");
-  }
-  @font-face {
-    font-family: Cera-Pro-Medium;
-    src: url("/public/font/Cera\ Pro\ Medium.otf");
-  }
   display: flex;
   gap: 10px;
   margin: 0;

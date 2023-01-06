@@ -1,13 +1,11 @@
 import { useState } from "react";
 import { createPortal } from "react-dom";
-import "../../styles/carta.css";
 import { CartaExpandida } from "../CartasCategoria/carta-expandida/CartaExpandida";
 
 const modalRoot = document.getElementById("modal");
 export default function CartaMenu(props) {
   const [mostrarCarta, setMostrarCarta] = useState(false);
   const handleModal = () => setMostrarCarta(!mostrarCarta);
-  console.log(props.tituloCarta)
   let data = [
     {
       container: "bold_carta",
@@ -40,12 +38,11 @@ export default function CartaMenu(props) {
           />
         </div>
         <span className=" leading-none text-justify grid grid-rows-[auto,min-content min-content] gap-0 p-1 box-content mr-3">
-        {data.map((v, i) => (
-            <span className={v.container}>
+          {data.map((v, i) => (
+            <span className={v.container} key={i}>
               <span className={v.soon}>{v.prop}</span>
             </span>
-          ))} 
-         
+          ))}
         </span>
       </a>
       {mostrarCarta &&

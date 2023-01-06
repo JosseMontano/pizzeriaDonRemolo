@@ -90,8 +90,8 @@ export default function MostrarApi(props) {
       <ContainerCat>
         <Buscador datosPizza={datosPizza} filtrar={filtrar} />
         <BarraCategoriaCss>
-          {props.cats.map((cat) => (
-            <Categoria cat={cat} onSubmit={fetchData} />
+          {props.cats.map((cat, i) => (
+            <Categoria key={i} cat={cat} onSubmit={fetchData} />
           ))}
         </BarraCategoriaCss>
       </ContainerCat>

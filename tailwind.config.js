@@ -38,11 +38,6 @@ module.exports = {
         'desktop1920':"1920px",
         'botonatrascarrito':"1200px",
       },
-      fontFamily:{
-        cera:['Cera-Pro-Bold'],
-        ceraregular:['Cera-Pro-Regular'],
-        ceramedium:['Cera-Pro-Medium'],
-      },
       fontSize:{
         'titulo1280':'24px' ,
       }
