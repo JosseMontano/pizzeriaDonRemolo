@@ -5,7 +5,6 @@ const Container = styled.article`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 122px;
   background-color: #fff;
   padding: 16px;
   p {

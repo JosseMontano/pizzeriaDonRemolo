@@ -3,14 +3,14 @@ import React from "react";
 import { HashRouter, Routes, Route } from "react-router-dom";
 import Bienvenida from "./components/bienvenida";
 import ConfirmarCarrito from "./components/ConfirmarCarrito";
-import Form from './components/form'
+import Form from "./components/form";
 function App() {
   return (
     <HashRouter>
       <Routes>
-        <Route exact path="/" element={<Bienvenida />} />
-        <Route exact path="carrito" element={<ConfirmarCarrito />} />
-        <Route exact path="formulario" element={<Form />} />
+        <Route path="/" element={<Bienvenida />} />
+        <Route path="carrito" element={<ConfirmarCarrito />} />
+        <Route path="formulario" element={<Form />} />
       </Routes>
     </HashRouter>
   );

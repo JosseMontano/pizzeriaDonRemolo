@@ -153,7 +153,7 @@ const FormValidate = ({ totalSta }) => {
 
       <p>Indicación adicional</p>
       <input
-        class="full"
+        className="full"
         placeholder="Ej: Casa con rejas verdes"
         name="aditional"
         onBlur={handleBlur}
@@ -174,7 +174,7 @@ const FormValidate = ({ totalSta }) => {
       {errors.nameAndLast && <p style={styles}>{errors.nameAndLast}</p>}
       <p>¿Con cuanto vas a pagar?</p>
       <input
-        class="full"
+        className="full"
         placeholder="Ej: $400"
         name="amountPay"
         onBlur={handleBlur}

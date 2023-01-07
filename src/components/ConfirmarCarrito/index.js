@@ -8,8 +8,6 @@ import { Link } from "react-router-dom";
 import ModalOrderSuccess from "./modalOrderSuccess";
 import { UseModalOrderSuccess } from "./useModalOrderSuccess";
 import { useEffect, useState } from "react";
-import FormContext from "../../context/formContext";
-import { useContext } from "react";
 
 export default function ConfirmarCarrito() {
   const shoppings = useSelector((state) => state.shoppings);
@@ -17,7 +15,6 @@ export default function ConfirmarCarrito() {
     openModal1();
   };
   const [isOpenModal1, openModal1, closeModal1] = UseModalOrderSuccess(false);
-  const { formContext, handleForm } = useContext(FormContext);
   var data;
   const [dataContext, setDataContext] = useState({});
 
@@ -49,8 +46,7 @@ export default function ConfirmarCarrito() {
  
   }, [shoppings]);
 
-  //obtener el usuario
-  //var data=formContext;
+
   return (
     <>
       <ModalOrderSuccess

@@ -1,10 +1,8 @@
 import NombreCuerpoCategoria from "./nombreCuerpoCategoria";
-
-import { useSelector } from "react-redux";
-import BotonContinuarItems from "../ConfirmarCarrito/BotonContinuarItems";
 import NotFound from "../compartidos/notFound";
 import ApiRest from "./resultadoApi";
 import styled from "styled-components";
+import Footer from "./footer";
 
 const Container = styled.div`
   display: grid;
@@ -12,7 +10,7 @@ const Container = styled.div`
   margin: 0px 110px;
   justify-content: center;
   grid-template-columns: repeat(3, minmax(400px, 350px));
-  margin-bottom: 80px;
+  margin-bottom: 100px;
   .contanedorimagen_carta {
     display: flex;
     align-items: center;
@@ -26,7 +24,6 @@ const Container = styled.div`
   @media screen and (max-width: 1279px) {
     grid-template-columns: repeat(3, minmax(300px, 1fr));
     margin: 0px 15px;
-    margin-bottom: 80px;
 
     .inputSearch {
       margin-top: 17px;
@@ -54,33 +51,18 @@ export default function MostrarApi({
   loadingData,
   datosPizza,
   nombreProducto,
-  formUser,
 }) {
-  const shoppings = useSelector((state) => state.shoppings);
-
   return (
     <>
       <NombreCuerpoCategoria nombreCategoria={nombreProducto} />
-      {/*       <NotFound /> */}
 
       <Container>
         {!loadingData && datosPizza.map((v, i) => <ApiRest v={v} key={i} />)}
       </Container>
 
-      {shoppings.length > 0 &&
-        (!formUser ? (
-          <BotonContinuarItems
-            sendWhatsapp={false}
-            to={"/formulario"}
-            text={"Continuar con el pedido"}
-          />
-        ) : (
-          <BotonContinuarItems
-            sendWhatsapp={false}
-            to={"/Carrito"}
-            text={"Continuar con el pedido"}
-          />
-        ))}
+      {datosPizza.length == 0 && <NotFound />}
+
+      <Footer />
     </>
   );
 }

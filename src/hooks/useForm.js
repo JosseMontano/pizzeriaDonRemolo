@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import { useContext, useState } from "react";
 import FormContext from "../context/formContext";
 
 export const UseForm = (initialForm, validateForm, amountToPay) => {

@@ -1,10 +1,9 @@
 import React from "react";
 import styled from "styled-components";
-
+import Img from "../../assets/imagenes/NotFound.png";
 const Container = styled.div`
   display: grid;
   justify-content: center;
-  margin-top: -20px;
   h2 {
     font-size: 30px;
     font-weight: bold;
@@ -14,7 +13,7 @@ const Container = styled.div`
 const NotFound = () => {
   return (
     <Container>
-      <img src="../imagenes/NotFound.png" />
+      <img src={Img} />
       <h2>No hay resultados</h2>
     </Container>
   );

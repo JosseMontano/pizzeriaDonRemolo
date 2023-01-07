@@ -4,6 +4,7 @@ const Container = styled.section`
   display: flex;
   flex-direction: column;
   gap: 1;
+  color: #000;
   label {
     width: max-content;
     text-align: center;
@@ -27,7 +28,9 @@ export const AclaracionContenedor = ({ onChangeText }) => {
     if (e.target.value.trim() != "") {
       onChangeText(e.target.value);
       setLengthAclaration(e.target.value.length);
+      return;
     }
+    setLengthAclaration(0);
   };
   return (
     <Container>

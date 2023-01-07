@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { cats } from "../../services/http";
 import Buscador from "./buscador";
@@ -34,7 +34,7 @@ const ContainerCat = (props) => {
         v.id === sendid ? { ...v, state: true } : { ...v, state: false }
       )
     );
-    props.handleChangeCat(sendid)
+    props.handleChangeCat(sendid);
   };
 
   return (

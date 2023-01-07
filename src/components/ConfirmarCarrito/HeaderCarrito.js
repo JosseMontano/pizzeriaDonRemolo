@@ -76,7 +76,7 @@ export default function HeaderCarrito({ handleModal }) {
 
   return (
     <>
-      <NavLink exact to="/">
+      <NavLink to="/">
         <Container className="fondo">
           <ContainerSoon className="">
             <Section className="">

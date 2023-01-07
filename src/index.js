@@ -13,9 +13,9 @@ root.render(
   <React.StrictMode>
     <Provider store={store}>
       <MyProvider>
-            <FormProvider>
-                <App />
-            </FormProvider>
+        <FormProvider>
+          <App />
+        </FormProvider>
       </MyProvider>
     </Provider>
   </React.StrictMode>

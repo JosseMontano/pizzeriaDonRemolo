@@ -138,7 +138,7 @@ export const DetalleEnvio = ({ data }) => {
                 <ParagrahDetail>{data.gate}</ParagrahDetail>
               </div>
               <EditBtnDetail>
-                <NavLink exact to="/formulario">
+                <NavLink to="/formulario">
                   <p>
                     Editar
                     <IconoEditar />

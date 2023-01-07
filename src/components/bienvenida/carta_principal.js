@@ -1,11 +1,37 @@
 import { useState } from "react";
 import { createPortal } from "react-dom";
+import styled from "styled-components";
 import { CartaExpandida } from "../CartasCategoria/carta-expandida/CartaExpandida";
+import { useModal } from "../../hooks/useModal";
+import { Modal } from "../compartidos/modal";
+const Container = styled.a`
+  background: #fff;
+  border-radius: 15px;
+  padding: 6px;
+  gap: 12px;
+  &:hover {
+    box-shadow: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  &:active {
+    border: 1px solid red;
+  }
+`;
 
-const modalRoot = document.getElementById("modal");
+const Img = styled.img`
+  object-fit: cover;
+  border-radius: 15px;
+  height: 200px;
+  width: 100%;
+`;
+
+const ContainerText = styled.span`
+  display: grid;
+  padding: 1px;
+`;
+
 export default function CartaMenu(props) {
-  const [mostrarCarta, setMostrarCarta] = useState(false);
-  const handleModal = () => setMostrarCarta(!mostrarCarta);
+  const { isOpen, openModal, closeModal } = useModal();
+
   let data = [
     {
       container: "bold_carta",
@@ -25,31 +51,23 @@ export default function CartaMenu(props) {
   ];
   return (
     <>
-      <a
-        key={props.id}
-        className="bg-white rounded-2xl p-[6px] gap-[12px] shadow-cartasmobile  hover:shadow-cartasmobilehover active:border-blue-800 active:border containerCartaInterna"
-        onClick={handleModal}
-      >
-        <div className="contanedorimagen_carta">
-          <img
-            src={props.imagenCarta}
-            alt={props.imagenCarta}
-            className="object-fill border-solid rounded-xl"
-          />
+      <Container key={props.id} onClick={() => openModal()}>
+        <div>
+          <Img src={props.imagenCarta} alt={props.imagenCarta} />
         </div>
-        <span className=" leading-none text-justify grid grid-rows-[auto,min-content min-content] gap-0 p-1 box-content mr-3">
+        <ContainerText>
           {data.map((v, i) => (
             <span className={v.container} key={i}>
               <span className={v.soon}>{v.prop}</span>
             </span>
           ))}
-        </span>
-      </a>
-      {mostrarCarta &&
-        createPortal(
-          <CartaExpandida handleModal={handleModal} {...props} />,
-          modalRoot
-        )}
+        </ContainerText>
+      </Container>
+      <Modal
+        modalContent={<CartaExpandida closeModal={closeModal} {...props} />}
+        hide={closeModal}
+        isShown={isOpen}
+      />
     </>
   );
 }

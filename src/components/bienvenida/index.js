@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import Titulo from "./titulo";
 import Descripcion from "./descripcion";
 import MostrarApi from "./mostrarApi";
@@ -10,21 +10,11 @@ const Bienvenida = () => {
   const [idCat, setIdCat] = useState(1);
   const [datosPizza, setDatosPizza] = useState([]);
   const [loadingData, setLoadingData] = useState(true);
-  const [formUserState, setFormUserState] = useState({});
 
   const handleGetData = () => {
     const res = jsonData.filter((v) => v.catId === idCat);
     setDatosPizza(res);
     setLoadingData(false);
-  };
-
-  var formUser = {
-    direction: "No definido",
-    floor: "No definido",
-    gate: "No definido",
-    aditional: "No definido",
-    nameAndLast: "No definido",
-    amountPay: "No definido",
   };
 
   const search = (v) => {
@@ -42,7 +32,6 @@ const Bienvenida = () => {
     return search(v);
   });
 
-  console.log(dataFilter);
 
   const filter = (searchTerm) => {
     setNombreProducto(searchTerm);
@@ -54,25 +43,6 @@ const Bienvenida = () => {
 
   useEffect(() => {
     handleGetData();
-    if (window.localStorage) {
-      window.addEventListener(
-        "storage",
-        (event) => {
-          if (event.storageArea === localStorage) {
-            if (
-              window.localStorage.getItem("Sidebar") !== undefined &&
-              window.localStorage.getItem("Sidebar")
-            ) {
-              if (formUser) {
-                formUser = JSON.parse(localStorage.getItem("formUser"));
-                setFormUserState(formUser);
-              }
-            }
-          }
-        },
-        false
-      );
-    }
   }, [idCat]);
 
   return (
@@ -85,7 +55,6 @@ const Bienvenida = () => {
         idCat={idCat}
         datosPizza={nombreProducto === "" ? datosPizza : dataFilter}
         loadingData={loadingData}
-        formUser={formUserState}
       />
     </>
   );

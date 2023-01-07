@@ -6,7 +6,6 @@ const InputWrapper = styled.div`
   position: relative;
   padding: 2px;
   width: 40%;
-  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12);
   input {
     color: #191919;
     padding: 12px 15px 12px 35px;
@@ -18,8 +17,8 @@ const InputWrapper = styled.div`
     position: absolute;
     width: 17px;
     height: 17px;
-    top: 25%;
-    left: -30px;
+    top: 35%;
+    left: -27px;
     margin-left: 42px;
     margin-top: 10px;
     transform: translateY(-50%);

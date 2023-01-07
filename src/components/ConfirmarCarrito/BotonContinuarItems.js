@@ -125,7 +125,6 @@ export default function BotonContinuarItems({
       <ContainerBtnShopp>
         <Btn>
           <NavLink
-            exact
             to={to}
             onClick={
               shoppings.length === 0 ? () => emptyCar() : () => sendOrderSoon()

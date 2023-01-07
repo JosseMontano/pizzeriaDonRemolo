@@ -9,9 +9,10 @@ const Btn = styled.button`
   height: 30px;
   background-color: #fff;
   border-radius: 50%;
+  z-index: 999;
   position: absolute;
-  top: 2px;
-  right: 2px;
+  top: 1rem;
+  right: 1rem;
   &:hover {
     transition: all 0.1s;
   }
@@ -20,9 +21,9 @@ const Btn = styled.button`
   }
 `;
 
-export const BotonAtras = ({ fn }) => {
+export const BotonAtras = ({ hide }) => {
   return (
-    <Btn onClick={fn}>
+    <Btn onClick={hide}>
       <img src={Arrow} alt="volver" />
     </Btn>
   );
