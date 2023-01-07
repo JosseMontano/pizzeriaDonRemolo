@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useNavigate } from "react-router-dom";
-import EmptyContext from "../../context/emptyContext";
 import { useContext } from "react";
 import Swal from "sweetalert";
 import { deleteAll } from "../../features/shopping/shoppingSlice";
@@ -81,7 +80,6 @@ export default function BotonContinuarItems({
 }) {
   const shoppings = useSelector((state) => state.shoppings);
   const [totalSta, setTotalSta] = useState(0);
-  const { empty } = useContext(EmptyContext);
   const dispatch = useDispatch();
   const getTotal = () => {
     var total = 0;

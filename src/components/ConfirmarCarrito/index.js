@@ -9,12 +9,10 @@ import ModalOrderSuccess from "./modalOrderSuccess";
 import { UseModalOrderSuccess } from "./useModalOrderSuccess";
 import { useEffect, useState } from "react";
 import FormContext from "../../context/formContext";
-import EmptyContext from "../../context/emptyContext";
 import { useContext } from "react";
 
 export default function ConfirmarCarrito() {
   const shoppings = useSelector((state) => state.shoppings);
-  const { empty, handleEmpty, handleFull } = useContext(EmptyContext);
   const sendOrder = () => {
     openModal1();
   };
@@ -48,8 +46,7 @@ export default function ConfirmarCarrito() {
       }
     }
 
-    if (shoppings.length < 1) handleEmpty();
-    else handleFull();
+ 
   }, [shoppings]);
 
   //obtener el usuario

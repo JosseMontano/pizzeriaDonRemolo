@@ -6,7 +6,6 @@ import reportWebVitals from "./reportWebVitals";
 import { store } from "./app/store";
 import { Provider } from "react-redux";
 import MyProvider from "./components/ConfirmarCarrito/provider";
-import { EmptyProvider } from "./context/emptyContext";
 import { FormProvider } from "./context/formContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
@@ -14,11 +13,9 @@ root.render(
   <React.StrictMode>
     <Provider store={store}>
       <MyProvider>
-          <EmptyProvider>
             <FormProvider>
                 <App />
             </FormProvider>
-          </EmptyProvider>
       </MyProvider>
     </Provider>
   </React.StrictMode>
