@@ -34,7 +34,7 @@ const Span = styled.span`
 
 const categoria = (props) => {
   const handleSubmit = (id) => {
-    props.onSubmit(id);
+    props.changeCat(id);
   };
   return (
     <Container key={props.cat.id}>

@@ -1,14 +1,13 @@
 import CartaMenu from "./carta_principal";
 
-export default function ApiRest (props) {
-    return (
-      <CartaMenu
-        id={props.id}
-        tituloCarta={props.tituloCarta}
-        descripcionCarta={props.descripcionCarta}
-        imagenCarta={props.imagenCarta}
-        precioCarta={props.precioCarta}
-      />
-    );
-  };
-  
+export default function ApiRest({ v }) {
+  return (
+    <CartaMenu
+      id={v.id}
+      tituloCarta={v.tituloCarta}
+      descripcionCarta={v.descripcionCarta}
+      imagenCarta={v.imagenCarta}
+      precioCarta={v.precioCarta}
+    />
+  );
+}

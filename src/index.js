@@ -6,7 +6,6 @@ import reportWebVitals from "./reportWebVitals";
 import { store } from "./app/store";
 import { Provider } from "react-redux";
 import MyProvider from "./components/ConfirmarCarrito/provider";
-import { ModalProvider } from "./context/modalContext";
 import { EmptyProvider } from "./context/emptyContext";
 import { FormProvider } from "./context/formContext";
 
@@ -15,13 +14,11 @@ root.render(
   <React.StrictMode>
     <Provider store={store}>
       <MyProvider>
-        <ModalProvider>
           <EmptyProvider>
             <FormProvider>
                 <App />
             </FormProvider>
           </EmptyProvider>
-        </ModalProvider>
       </MyProvider>
     </Provider>
   </React.StrictMode>

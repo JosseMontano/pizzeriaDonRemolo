@@ -1,7 +1,7 @@
 import "./styles/App.css";
 import React from "react";
 import { HashRouter, Routes, Route } from "react-router-dom";
-import Bienvenida from "./pages/bienvenida";
+import Bienvenida from "./components/bienvenida";
 import ConfirmarCarrito from "./components/ConfirmarCarrito";
 import Form from './components/form'
 function App() {

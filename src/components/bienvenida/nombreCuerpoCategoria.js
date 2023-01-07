@@ -15,9 +15,14 @@ const Container = styled.div`
 `;
 
 export default function NombreCuerpoCategoria(props) {
+  let msg = "";
+  if (props.nombreCategoria) {
+    msg = "Todos los productos con la palabra " + props.nombreCategoria;
+  }
+
   return (
     <Container>
-      <p> {props.nombreCategoria} </p>
+      <p> {msg} </p>
     </Container>
   );
 }

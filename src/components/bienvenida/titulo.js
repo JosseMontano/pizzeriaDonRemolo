@@ -1,6 +1,3 @@
-import "../../styles/App.css";
-import { useContext } from "react";
-import ModalContext from "./../../context/modalContext";
 import styled from "styled-components";
 
 const Container = styled.div`
@@ -21,12 +18,8 @@ const Container = styled.div`
 `;
 
 export default function Titulo() {
-  const { modal, handleModal } = useContext(ModalContext);
-  const hideHandleModal = () => {
-    handleModal(modal);
-  };
   return (
-    <Container onClick={hideHandleModal}>
+    <Container>
       <p>Pizzería Don Rémolo</p>
     </Container>
   );
