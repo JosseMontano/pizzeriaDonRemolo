@@ -1,5 +1,5 @@
 import BotonContinuarItems from "./BotonContinuarItems";
-import HeaderCarrito from "./HeaderCarrito";
+import HeaderCarrito from "../compartidos/HeaderCarrito";
 import { useSelector } from "react-redux";
 import "../../styles/index.css";
 import { DetalleEnvio } from "./detalleEnvio";

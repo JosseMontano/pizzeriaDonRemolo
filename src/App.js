@@ -4,7 +4,16 @@ import { HashRouter, Routes, Route } from "react-router-dom";
 import Bienvenida from "./components/bienvenida";
 import ConfirmarCarrito from "./components/ConfirmarCarrito";
 import Form from "./components/form";
+
 function App() {
+  return (
+    <>
+      <RouteComponent />
+    </>
+  );
+}
+
+export function RouteComponent() {
   return (
     <HashRouter>
       <Routes>

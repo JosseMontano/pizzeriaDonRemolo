@@ -1,10 +1,6 @@
-import { useContext, useState } from "react";
-import FormContext from "../context/formContext";
+import { useState } from "react";
 
 export const UseForm = (initialForm, validateForm, amountToPay) => {
-
-    const { formContext, handleForm } = useContext(FormContext);
-
   const [form, setForm] = useState(initialForm);
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
@@ -12,9 +8,9 @@ export const UseForm = (initialForm, validateForm, amountToPay) => {
 
   const handleSend = async (form) => {
     //handleForm(form);
-    alert('enviado');
-    console.log(form)
-    localStorage.setItem('formUser', JSON.stringify(form)) 
+    alert("enviado");
+    console.log(form);
+    localStorage.setItem("formUser", JSON.stringify(form));
   };
 
   const handleChange = (e) => {
@@ -24,10 +20,7 @@ export const UseForm = (initialForm, validateForm, amountToPay) => {
       [name]: value,
     });
   };
-  const handleBlur = (e) => {
-    handleChange(e);
-    setErrors(validateForm(form, amountToPay));
-  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     setErrors(validateForm(form, amountToPay));
@@ -44,7 +37,6 @@ export const UseForm = (initialForm, validateForm, amountToPay) => {
     loading,
     response,
     handleChange,
-    handleBlur,
     handleSubmit,
   };
 };

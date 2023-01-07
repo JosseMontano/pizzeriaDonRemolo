@@ -50,12 +50,6 @@ const ContainerSoon = styled.div`
   }
 `;
 
-const Close = styled.p`
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-`;
-
 export const Modal = ({ isShown, hide, modalContent }) => {
   const handleModalContainerClick = (e) => e.stopPropagation();
   const modal = (

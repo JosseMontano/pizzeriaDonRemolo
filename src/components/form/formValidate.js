@@ -102,15 +102,8 @@ let styles = {
 };
 
 const FormValidate = ({ totalSta }) => {
-  const {
-    form,
-    errors,
-    loading,
-    response,
-    handleChange,
-    handleBlur,
-    handleSubmit,
-  } = UseForm(initialForm, validationsForm, totalSta);
+  const { form, errors, loading, response, handleChange, handleSubmit } =
+    UseForm(initialForm, validationsForm, totalSta);
 
   return (
     <ContainerForm onSubmit={handleSubmit}>
@@ -121,7 +114,6 @@ const FormValidate = ({ totalSta }) => {
           <input
             placeholder="Ej:9 de Julio 2500"
             name="direction"
-            onBlur={handleBlur}
             onChange={handleChange}
             value={form.direction}
           ></input>
@@ -132,7 +124,6 @@ const FormValidate = ({ totalSta }) => {
           <Input
             placeholder="Ej:3"
             name="floor"
-            onBlur={handleBlur}
             onChange={handleChange}
             value={form.floor}
           ></Input>
@@ -143,7 +134,6 @@ const FormValidate = ({ totalSta }) => {
           <Input
             placeholder="Ej:A"
             name="gate"
-            onBlur={handleBlur}
             onChange={handleChange}
             value={form.gate}
           ></Input>
@@ -156,7 +146,6 @@ const FormValidate = ({ totalSta }) => {
         className="full"
         placeholder="Ej: Casa con rejas verdes"
         name="aditional"
-        onBlur={handleBlur}
         onChange={handleChange}
         value={form.aditional}
       ></input>
@@ -167,7 +156,6 @@ const FormValidate = ({ totalSta }) => {
         className="full"
         placeholder="Ej: Juan perez"
         name="nameAndLast"
-        onBlur={handleBlur}
         onChange={handleChange}
         value={form.nameAndLast}
       ></input>
@@ -177,7 +165,6 @@ const FormValidate = ({ totalSta }) => {
         className="full"
         placeholder="Ej: $400"
         name="amountPay"
-        onBlur={handleBlur}
         onChange={handleChange}
         value={form.amountPay}
       ></input>

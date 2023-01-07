@@ -1,10 +1,9 @@
-import { useState, useEffect, useContext } from "react";
-import Titulo from "./titulo";
+import { useState, useEffect } from "react";
 import Descripcion from "./descripcion";
 import MostrarApi from "./mostrarApi";
 import ContainerCat from "./containerCat";
 import { jsonData } from "./../../services/http";
-
+import HeaderCarrito from "../compartidos/HeaderCarrito";
 const Bienvenida = () => {
   const [nombreProducto, setNombreProducto] = useState("");
   const [idCat, setIdCat] = useState(1);
@@ -32,7 +31,6 @@ const Bienvenida = () => {
     return search(v);
   });
 
-
   const filter = (searchTerm) => {
     setNombreProducto(searchTerm);
   };
@@ -47,7 +45,7 @@ const Bienvenida = () => {
 
   return (
     <>
-      <Titulo />
+      <HeaderCarrito />
       <Descripcion />
       <ContainerCat filter={filter} handleChangeCat={handleChangeCat} />
       <MostrarApi

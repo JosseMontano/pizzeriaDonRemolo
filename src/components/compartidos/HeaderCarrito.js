@@ -1,4 +1,3 @@
-import "../../styles/App.css";
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 
@@ -54,26 +53,7 @@ const OrderSummary = styled.p`
   visibility: hidden;
 `;
 
-const Btn = styled.button`
-  border-radius: 100%;
-  width: 10px;
-  height: 10px;
-  background-color: #fff;
-  position: absolute;
-  top: 18px;
-  left: 12px;
-  visibility: hidden;
-  svg {
-    position: absolute;
-    width: 24px;
-    height: 24px;
-    left: 8px;
-    top: 8px;
-  }
-`;
-export default function HeaderCarrito({ handleModal }) {
-  const handleclick = () => {};
-
+export default function HeaderCarrito({}) {
   return (
     <>
       <NavLink to="/">
@@ -85,23 +65,6 @@ export default function HeaderCarrito({ handleModal }) {
               </p>
               <OrderSummary className="">Resumen del pedido</OrderSummary>
             </Section>
-            {/* LA FLECHA DE REGRESAR */}
-            <Btn onClick={handleclick} className="">
-              <svg
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M20 11H7.83L13.42 5.41L12 4L4 12L12 20L13.41 18.59L7.83 13H20V11Z"
-                  fill="#E74423"
-                />
-              </svg>
-            </Btn>
-
-            {/* FLECHA  */}
           </ContainerSoon>
         </Container>
       </NavLink>
