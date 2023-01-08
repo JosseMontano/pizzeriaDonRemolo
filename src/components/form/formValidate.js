@@ -1,8 +1,10 @@
 import React from "react";
-import { UseForm } from "../../hooks/useForm";
 import styled from "styled-components";
+import { Form, Formik } from "formik";
+import * as Yup from "yup";
+import MyTextInput from "./myTextInput";
 
-const ContainerForm = styled.form`
+const ContainerForm = styled.div`
   width: auto;
   min-height: 453px;
   align-items: center;
@@ -23,6 +25,10 @@ const ContainerForm = styled.form`
   .full {
     width: 100%;
   }
+  form .error {
+    font-weight: bold;
+    color: #dc3545;
+  }
 `;
 
 const Btn = styled.button`
@@ -38,139 +44,71 @@ const Btn = styled.button`
     transform: scale(1.1);
   }
 `;
-const ContainerDetail = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  width: 100%;
-  align-items: center;
-  justify-content: space-between;
-  margin-top: 10px;
-`;
-
-const Input = styled.input`
-  width: 2.3rem;
-`;
-const initialForm = {
-  direction: "",
-  floor: "",
-  gate: "",
-  aditional: "",
-  nameAndLast: "",
-  amountPay: "",
-};
-
-const validationsForm = (form, amountToPay) => {
-  let errors = {};
-  //expresions regulars
-  let regexName = /^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]+$/;
-  let regexComments = /^.{1,255}$/; //of 1 to 255
-  //si queremos de uno en uno, concatenamos todos en un solo if
-  if (!form.nameAndLast.trim()) {
-    errors.nameAndLast = "El campo 'Nombre y apellido' es requerido";
-  } else if (!regexName.test(form.nameAndLast.trim())) {
-    errors.nameAndLast =
-      "El campo 'Nombre y apellido' sólo acepta letras y espacios en blanco";
-  }
-  if (!form.direction.trim()) {
-    errors.direction = "El campo 'Direccion' es requerido";
-  }
-  if (!form.aditional.trim()) {
-    errors.aditional = "El campo 'Adicional' es requerido";
-  }
-  if (!form.amountPay.trim()) {
-    errors.amountPay =
-      "El campo 'Con cuanto vas a pagar' es requerido y solo acepta numeros";
-  }
-  if (isNaN(form.amountPay)) {
-    errors.amountPay = "El campo 'Con cuanto vas a pagar' solo acepta numeros";
-  }
-  if (form.amountPay < amountToPay) {
-    errors.amountPay =
-      "El campo 'Con cuanto vas a pagar' tiene que ser mayor al precio a pagar";
-  }
-  if (isNaN(form.floor)) {
-    errors.floor = "El campo 'Piso' solo acepta numeros";
-  }
-  if (form.floor < 0 || form.floor > 100) {
-    errors.floor = "El campo 'Piso' solo acepta valores entre 1 y 99";
-  }
-  return errors;
-};
-let styles = {
-  fontWeight: "bold",
-  color: "#dc3545",
-};
 
 const FormValidate = ({ totalSta }) => {
-  const { form, errors, loading, response, handleChange, handleSubmit } =
-    UseForm(initialForm, validationsForm, totalSta);
+  const requiredText = "Este campo es obligatiorio";
+  const obligatedNumber = "Este campo es de tipo numero";
 
   return (
-    <ContainerForm onSubmit={handleSubmit}>
-      <h2>Detalles del envío</h2>
-      <ContainerDetail>
-        <div>
-          <p>Dirección</p>
-          <input
-            placeholder="Ej:9 de Julio 2500"
+    <ContainerForm>
+      <Formik
+        validateOnChange={false} //comment in production
+        initialValues={{
+          direction: "",
+          floor: "",
+          gate: "",
+          aditional: "",
+          nameAndLast: "",
+          amountPay: "",
+        }}
+        validationSchema={Yup.object({
+          direction: Yup.string().required(requiredText),
+          floor: Yup.number().required(requiredText),
+          gate: Yup.string().max(7, "7 maximo").required(requiredText),
+          aditional: Yup.string().required(requiredText),
+          nameAndLast: Yup.string().required(requiredText),
+          amountPay: Yup.number()
+            .min(totalSta, "Tiene que ser mayor a la cantidad a pagar")
+            .required(requiredText),
+        })}
+        onSubmit={(values) => {
+          console.log(values);
+          localStorage.setItem("formUser", JSON.stringify(values));
+        }}
+      >
+        <Form>
+          <h2>Detalles del envío</h2>
+          <MyTextInput
+            label={"Dirección"}
             name="direction"
-            onChange={handleChange}
-            value={form.direction}
-          ></input>
-          {errors.direction && <p style={styles}>{errors.direction}</p>}
-        </div>
-        <div>
-          <p>Piso</p>
-          <Input
-            placeholder="Ej:3"
-            name="floor"
-            onChange={handleChange}
-            value={form.floor}
-          ></Input>
-          {errors.floor && <p style={styles}>{errors.floor}</p>}
-        </div>
-        <div>
-          <p>Puerta</p>
-          <Input
-            placeholder="Ej:A"
-            name="gate"
-            onChange={handleChange}
-            value={form.gate}
-          ></Input>
-          {errors.gate && <p style={styles}>{errors.gate}</p>}
-        </div>
-      </ContainerDetail>
+            placeholder="Ej: Cala cala"
+          />
 
-      <p>Indicación adicional</p>
-      <input
-        className="full"
-        placeholder="Ej: Casa con rejas verdes"
-        name="aditional"
-        onChange={handleChange}
-        value={form.aditional}
-      ></input>
-      {errors.aditional && <p style={styles}>{errors.aditional}</p>}
-      <br />
-      <p>Nombre y apellido</p>
-      <input
-        className="full"
-        placeholder="Ej: Juan perez"
-        name="nameAndLast"
-        onChange={handleChange}
-        value={form.nameAndLast}
-      ></input>
-      {errors.nameAndLast && <p style={styles}>{errors.nameAndLast}</p>}
-      <p>¿Con cuanto vas a pagar?</p>
-      <input
-        className="full"
-        placeholder="Ej: $400"
-        name="amountPay"
-        onChange={handleChange}
-        value={form.amountPay}
-      ></input>
-      {errors.amountPay && <p style={styles}>{errors.amountPay}</p>}
-      <br />
-      <Btn>Guardar</Btn>
+          <MyTextInput label={"Piso"} name="floor" placeholder="Ej:3" />
+
+          <MyTextInput label={"Puerta"} name="gate" placeholder="Ej:A" />
+
+          <MyTextInput
+            label={"Indicación adicional"}
+            name="aditional"
+            placeholder="Ej: Casa con rejas verdes"
+          />
+
+          <MyTextInput
+            label={"Nombre y apellido"}
+            name="nameAndLast"
+            placeholder="Ej: Juan perez"
+          />
+
+          <MyTextInput
+            label={"¿Con cuanto vas a pagar?"}
+            name="amountPay"
+            placeholder="Ej: $400"
+          />
+
+          <Btn type="submit">Guardar</Btn>
+        </Form>
+      </Formik>
     </ContainerForm>
   );
 };
