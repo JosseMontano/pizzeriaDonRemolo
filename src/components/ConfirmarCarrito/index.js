@@ -2,7 +2,6 @@ import BotonContinuarItems from "../global/footer";
 import HeaderCarrito from "../compartidos/HeaderCarrito";
 import { useSelector } from "react-redux";
 import { DetalleEnvio } from "./detalleEnvio";
-import { AlertaPedido } from "./alertaPedido";
 import { useModal } from "../../hooks/useModal";
 import { useContext } from "react";
 import Happy from "../../assets/imagenes/iconos/congratulations.png";
@@ -11,6 +10,7 @@ import styled from "styled-components";
 import { Modal } from "../compartidos/modal";
 import { useNavigate } from "react-router-dom";
 import ContentModalSuccess from "./contentModalSuccess";
+import ContainerAlertaPedido from "./containerAlertaPedido";
 
 const Container = styled.div`
   display: flex;
@@ -22,8 +22,6 @@ const Container = styled.div`
     margin: 10px 0px;
   }
 `;
-
-
 
 export default function ConfirmarCarrito() {
   const shoppings = useSelector((state) => state.shoppings);
@@ -55,22 +53,9 @@ export default function ConfirmarCarrito() {
     <>
       <HeaderCarrito />
       <Container className="ContainerFaShopp">
-        <div className="">
-          <h1> Resumen del pedido </h1>
-          {shoppings.map((shop) => (
-            <AlertaPedido shop={shop} />
-          ))}
-        </div>
+        <ContainerAlertaPedido shoppings={shoppings} />
         <DetalleEnvio data={formContext} />
       </Container>
-
-      <BotonContinuarItems
-        data={formContext}
-        sendOrder={openModal}
-        text={"Finalizar mi pedido"}
-        to={"/Carrito"}
-        sendWhatsapp={true}
-      />
 
       <Modal
         hide={closeModal}
@@ -78,6 +63,14 @@ export default function ConfirmarCarrito() {
         modalContent={
           <ContentModalSuccess Happy={Happy} apiWhatsapp={apiWhatsapp} />
         }
+      />
+
+      <BotonContinuarItems
+        data={formContext}
+        sendOrder={openModal}
+        text={"Finalizar mi pedido"}
+        to={"/Carrito"}
+        sendWhatsapp={true}
       />
     </>
   );
