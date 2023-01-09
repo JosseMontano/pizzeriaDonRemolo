@@ -1,5 +1,3 @@
-import { useEffect } from "react";
-
 import styled from "styled-components";
 import ColLeft from "./detalleEnvio/colLeft";
 import ColRight from "./detalleEnvio/colRight";
