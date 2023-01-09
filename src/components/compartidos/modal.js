@@ -16,6 +16,7 @@ const Container = styled.div`
   align-items: center;
   animation-name: transitionBackground;
   animation-duration: 1s;
+
   @keyframes transitionBackground {
     0% {
       background-color: rgba(0, 0, 0, 0.1);
@@ -28,7 +29,7 @@ const Container = styled.div`
 
 const ContainerSoon = styled.div`
   background: #fff; /* fallback for old browsers */
-  color: #fff;
+  color: #000;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.05), 0px 4px 6px rgba(0, 0, 0, 0.08);
   border-radius: 16px;
   position: relative;
@@ -38,6 +39,7 @@ const ContainerSoon = styled.div`
   animation: move 1s;
   transform: translateY(50px);
   margin-bottom: 100px;
+  padding: 1rem;
   @keyframes move {
     0% {
       transform: translateY(0px);

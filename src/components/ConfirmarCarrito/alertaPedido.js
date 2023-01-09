@@ -4,11 +4,14 @@ import { deletShopp, updateShopp } from "../../features/shopping/shoppingSlice";
 import { useSelector } from "react-redux";
 import Swal from "sweetalert";
 import { useModal } from "../../hooks/useModal";
-import ModalOrderSuccess from "./modalOrderSuccess";
 import styled from "styled-components";
 import { Text } from "../../styles/colors";
 import { TextOrange } from "../../styles/colors";
 import Warning from "../../assets/imagenes/iconos/warning.png";
+import { Modal } from "../compartidos/modal";
+import { deleteAll } from "../../features/shopping/shoppingSlice";
+import { useNavigate } from "react-router-dom";
+import ContentModalAlert from "./contentModalAlert";
 
 const Container = styled.div`
   padding: 20px;
@@ -104,6 +107,7 @@ const HeighPrice = styled.div`
 export const AlertaPedido = ({ shop }) => {
   const shoppings = useSelector((state) => state.shoppings);
   const { isOpen, openModal, closeModal } = useModal(false);
+  const navigate = useNavigate();
 
   const dispatch = useDispatch();
   const handleDelete = (id) => {
@@ -136,19 +140,15 @@ export const AlertaPedido = ({ shop }) => {
     };
     dispatch(updateShopp(data));
   };
+
+  const emptyShoppCar = () => {
+    dispatch(deleteAll(shoppings));
+    navigate("/");
+    window.location.reload(false);
+  };
+
   return (
     <>
-      <ModalOrderSuccess
-        isOpen={isOpen}
-        closeModal={closeModal}
-        data={shoppings}
-        shoppings={shoppings}
-        urlImg={Warning}
-        msgBtn={"Continuar con el pedido"}
-        msgDelete={"Si eliminar todos"}
-      >
-        <p>¿Querés eliminar todos los productos de tu pedido?.</p>
-      </ModalOrderSuccess>
       <Container key={shop.id}>
         <BtnClose
           onClick={
@@ -185,6 +185,18 @@ export const AlertaPedido = ({ shop }) => {
           </ContainerSend>
         </PriceShop>
       </Container>
+
+      <Modal
+        hide={closeModal}
+        isShown={isOpen}
+        modalContent={
+          <ContentModalAlert
+            Warning={Warning}
+            closeModal={closeModal}
+            emptyShoppCar={emptyShoppCar}
+          />
+        }
+      />
     </>
   );
 };
