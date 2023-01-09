@@ -3,11 +3,13 @@ import { useDispatch } from "react-redux";
 import { deletShopp, updateShopp } from "../../features/shopping/shoppingSlice";
 import { useSelector } from "react-redux";
 import Swal from "sweetalert";
-import { UseModalOrderSuccess } from "./useModalOrderSuccess";
+import { useModal } from "../../hooks/useModal";
 import ModalOrderSuccess from "./modalOrderSuccess";
 import styled from "styled-components";
 import { Text } from "../../styles/colors";
 import { TextOrange } from "../../styles/colors";
+import Warning from "../../assets/imagenes/iconos/warning.png";
+
 const Container = styled.div`
   padding: 20px;
   background-color: #ffffff;
@@ -101,7 +103,8 @@ const HeighPrice = styled.div`
 
 export const AlertaPedido = ({ shop }) => {
   const shoppings = useSelector((state) => state.shoppings);
-  const [isOpenModal1, openModal1, closeModal1] = UseModalOrderSuccess(false);
+  const { isOpen, openModal, closeModal } = useModal(false);
+
   const dispatch = useDispatch();
   const handleDelete = (id) => {
     dispatch(deletShopp(id));
@@ -115,7 +118,7 @@ export const AlertaPedido = ({ shop }) => {
   };
 
   const handleUnique = () => {
-    openModal1();
+    openModal();
   };
 
   const handleRest = (id, amount) => {
@@ -136,11 +139,11 @@ export const AlertaPedido = ({ shop }) => {
   return (
     <>
       <ModalOrderSuccess
-        isOpen={isOpenModal1}
-        closeModal={closeModal1}
+        isOpen={isOpen}
+        closeModal={closeModal}
         data={shoppings}
         shoppings={shoppings}
-        urlImg={"assets/imagenes/iconos/warning.png"}
+        urlImg={Warning}
         msgBtn={"Continuar con el pedido"}
         msgDelete={"Si eliminar todos"}
       >

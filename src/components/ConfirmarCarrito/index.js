@@ -1,60 +1,58 @@
-import BotonContinuarItems from "./BotonContinuarItems";
+import BotonContinuarItems from "../global/footer";
 import HeaderCarrito from "../compartidos/HeaderCarrito";
 import { useSelector } from "react-redux";
-import "../../styles/index.css";
 import { DetalleEnvio } from "./detalleEnvio";
 import { AlertaPedido } from "./alertaPedido";
-import { Link } from "react-router-dom";
 import ModalOrderSuccess from "./modalOrderSuccess";
-import { UseModalOrderSuccess } from "./useModalOrderSuccess";
-import { useEffect, useState } from "react";
+import { useModal } from "../../hooks/useModal";
+import { useContext } from "react";
+import Happy from "../../assets/imagenes/iconos/congratulations.png";
+import FormContext from "../../context/formContext";
+import styled from "styled-components";
+
+const Container = styled.div`
+  display: flex;
+  margin: 70px 0px;
+  justify-content: center;
+  flex-wrap: wrap;
+  h1 {
+    font-size: 24px;
+    margin: 10px 0px;
+  }
+`;
 
 export default function ConfirmarCarrito() {
   const shoppings = useSelector((state) => state.shoppings);
-  const sendOrder = () => {
-    openModal1();
-  };
-  const [isOpenModal1, openModal1, closeModal1] = UseModalOrderSuccess(false);
-  var data;
-  const [dataContext, setDataContext] = useState({});
-
-  useEffect(() => {
- 
-
-    if (localStorage) {
-      //Verificamos si soporta la caché local
-      //Como Saber si existe Sidebar
-      if (
-        localStorage.getItem("formUser") !== undefined &&
-        localStorage.getItem("formUser")
-      ) {
-        data = JSON.parse(localStorage.getItem("formUser"));
-        setDataContext(data);
-      } else {
-        data = {
-          direction: "No definido",
-          floor: "No definido",
-          gate: "No definido",
-          aditional: "No definido",
-          nameAndLast: "No definido",
-          amountPay: "No definido",
-        };
-        setDataContext(data);
-      }
-    }
-
- 
-  }, [shoppings]);
-
+  const { formContext } = useContext(FormContext);
+  const { isOpen, openModal, closeModal } = useModal(false);
 
   return (
     <>
-      <ModalOrderSuccess
-        isOpen={isOpenModal1}
-        closeModal={closeModal1}
-        data={dataContext}
+      <HeaderCarrito />
+      <Container className="ContainerFaShopp">
+        <div className="">
+          <h1> Resumen del pedido </h1>
+          {shoppings.map((shop) => (
+            <AlertaPedido shop={shop} />
+          ))}
+        </div>
+        <DetalleEnvio data={formContext} />
+      </Container>
+
+      <BotonContinuarItems
+        data={formContext}
+        sendOrder={openModal}
+        text={"Finalizar mi pedido"}
+        to={"/Carrito"}
+        sendWhatsapp={true}
+      />
+      
+      <ModalOrderSuccess  
+        isOpen={isOpen}
+        closeModal={closeModal}
+        data={formContext}
         shoppings={shoppings}
-        urlImg={"/assets/imagenes/iconos/congratulations.png"}
+        urlImg={Happy}
         msgBtn="ver pedido"
       >
         <h2>Felicitaciones</h2>
@@ -63,32 +61,6 @@ export default function ConfirmarCarrito() {
           efectivo al momento de la entrega.
         </p>
       </ModalOrderSuccess>
-      <HeaderCarrito />
-      <div className="ContainerFaShopp">
-        <div className="relative">
-          <h1>
-            <Link to="/">
-              <span className="static botonatrascarrito:absolute top-3 -left-32">
-                <strong>🡠 Volver atras </strong>
-              </span>
-            </Link>
-          </h1>
-          <h1> Resumen del pedido </h1>
-          {shoppings.map((shop) => (
-            <>
-              <AlertaPedido shop={shop} />
-            </>
-          ))}
-        </div>
-        <DetalleEnvio data={dataContext} />
-      </div>
-      <BotonContinuarItems
-        data={dataContext}
-        sendOrder={sendOrder}
-        text={"Finalizar mi pedido"}
-        to={"/Carrito"}
-        sendWhatsapp={true}
-      />
     </>
   );
 }

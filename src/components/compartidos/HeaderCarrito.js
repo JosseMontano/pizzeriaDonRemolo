@@ -44,14 +44,6 @@ const Section = styled.section`
   }
 `;
 
-const OrderSummary = styled.p`
-  color: #fff;
-  position: absolute;
-  left: 78px;
-  top: 25px;
-  font-family: medium;
-  visibility: hidden;
-`;
 
 export default function HeaderCarrito({}) {
   return (
@@ -61,9 +53,8 @@ export default function HeaderCarrito({}) {
           <ContainerSoon className="">
             <Section className="">
               <p>
-                <span>Pizzería Don Rémolo</span>
+                <span>Pizzería Don Rémolo1</span>
               </p>
-              <OrderSummary className="">Resumen del pedido</OrderSummary>
             </Section>
           </ContainerSoon>
         </Container>

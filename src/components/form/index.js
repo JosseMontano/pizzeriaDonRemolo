@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import BotonContinuarItems from "../ConfirmarCarrito/BotonContinuarItems";
+import BotonContinuarItems from "../global/footer";
 import HeaderCarrito from "../compartidos/HeaderCarrito";
 import FormValidate from "./formValidate";
 import { useSelector } from "react-redux";

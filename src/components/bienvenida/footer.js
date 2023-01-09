@@ -1,7 +1,7 @@
 import FormContext from "../../context/formContext";
 import { useContext } from "react";
 import { useSelector } from "react-redux";
-import BotonContinuarItems from "../ConfirmarCarrito/BotonContinuarItems";
+import BotonContinuarItems from "../global/footer";
 
 const Footer = () => {
   const shoppings = useSelector((state) => state.shoppings);

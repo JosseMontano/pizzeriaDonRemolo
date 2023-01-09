@@ -63,7 +63,7 @@ const FormValidate = ({ totalSta }) => {
         }}
         validationSchema={Yup.object({
           direction: Yup.string().required(requiredText),
-          floor: Yup.number().required(requiredText),
+          floor: Yup.number().required(requiredText).typeError(obligatedNumber),
           gate: Yup.string().max(7, "7 maximo").required(requiredText),
           aditional: Yup.string().required(requiredText),
           nameAndLast: Yup.string().required(requiredText),
